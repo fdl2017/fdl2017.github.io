@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+
+    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+  	<script type="text/javascript" src="../js/popper.js"></script>
+  	<script type="text/javascript" src="../js/bootstrap.js"></script>
+  	<script type="text/javascript" src="../js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+
+    <div id="wrapper" class="toggled">
+
+              <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Menu
+                    </a>
+                </li>
+                <li>
+                    <a href="import.html">取込</a>
+                </li>
+                <li>
+                    <a href="productManagement.html">作品管理</a>
+                </li>
+                <li>
+                    <a href="userManagement.html">ユーザ管理</a>
+                </li>
+                <li>
+                    <a href="charactor.html">キャラクター検索と印刷</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+<form class="form-horizontal">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>production list</h1>
+
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+                <h3>作品詳細</h3>
+                <div class="form-group">
+                  <label for="name" class="control-label col-sm-2">作品ID</label>
+                  <div class="col-sm-6">
+                      <input type="text" id="name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="control-label col-sm-2">作品名正式名称</label>
+                  <div class="col-sm-6">
+                      <input type="text" id="name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="control-label col-sm-2">英文名称</label>
+                  <div class="col-sm-6">
+                      <input type="text" id="name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="control-label col-sm-2">日本語コピーライト</label>
+                  <div class="col-sm-6">
+                      <input type="text" id="name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="control-label col-sm-2">copyright</label>
+                  <div class="col-sm-6">
+                      <input type="text" id="name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="control-label col-sm-2">Short copyright</label>
+                  <div class="col-sm-6">
+                      <input type="text" id="name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="control-label col-sm-2">製作年</label>
+                  <div class="col-sm-6">
+                      <input type="text" id="name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="control-label col-sm-2">カテゴリー 尺/話数</label>
+                  <div class="col-sm-6">
+                      <input type="text" id="name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-6">
+                      <button class="btn btn-primary">更新</button>
+                      <button class="btn btn-primary">削除</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+</div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

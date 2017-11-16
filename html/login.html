@@ -1,0 +1,65 @@
+
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css" >
+	<link rel="stylesheet" href="../css/bootstrap-grid.css" >
+	<link rel="stylesheet" href="../css/bootstrap-reboot.css" >
+	<link rel="stylesheet" href="../css/main.css" >
+
+	<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="../js/popper.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.bundle.js"></script>
+
+
+	<style>
+		.selector-for-some-widget {
+ 			 box-sizing: content-box;
+		}
+	</style>
+	<script type="text/javascript">
+
+	</script>
+
+
+</head>
+<body>
+	<div class=".container-fluid">
+  		container
+	</div>
+<!--
+    you can substitue the span of reauth email for a input with the email and
+    include the remember me checkbox
+    -->
+    <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+           <!--  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" /> -->
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" action="index.html">
+                <span id="reauth-email" class="reauth-email"></span>
+                <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
+                <input type="text" id="id" class="form-control" placeholder="ID" required autofocus />
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+
+</body>
+</html>
