@@ -8,15 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.css" >
-	<link rel="stylesheet" href="../css/bootstrap-grid.css" >
-	<link rel="stylesheet" href="../css/bootstrap-reboot.css" >
+  <link rel="stylesheet" href="../css/bootstrap.css" >
+	<link rel="stylesheet" href="../css/login.css" >
 	<link rel="stylesheet" href="../css/main.css" >
 
 	<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="../js/popper.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.bundle.js"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
 
 
 	<style>
@@ -25,15 +24,27 @@
 		}
 	</style>
 	<script type="text/javascript">
-
+			var userObj = {"admin":"admin","user1":"user1","user2":"user2"};
+			$(function(){
+				$("#btnlogin").on("click",function(){
+					if (!userObj[$("#id").val()+""] || $("#password").val() != userObj[$("#id").val()+""]) {
+						BootstrapDialog.show({
+            	message: "ユーザIDまたはパースワードは間違えた"
+        		});
+						return;
+					}
+					G_OBJ = window.sessionStorage;
+					G_OBJ.setItem("userId",$("#id").val());
+					//G_OBJ["sessionObje"] = {"userId":$("#id").val(),"password":$("#password").val()};
+					window.location = "index.html";
+					return false;
+				});
+			})
 	</script>
 
 
 </head>
 <body>
-	<div class=".container-fluid">
-  		container
-	</div>
 <!--
     you can substitue the span of reauth email for a input with the email and
     include the remember me checkbox
@@ -43,17 +54,17 @@
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
            <!--  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" /> -->
             <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin" action="index.html">
+            <form class="form-signin" >
                 <span id="reauth-email" class="reauth-email"></span>
                 <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
-                <input type="text" id="id" class="form-control" placeholder="ID" required autofocus />
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="text" id="id" class="form-control" placeholder="ユーザIDを入力してください" required autofocus />
+                <input type="password" id="password" class="form-control" placeholder="パースワードを入力してください" required>
                 <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin"  id="btnlogin">Sign in</button>
             </form><!-- /form -->
             <a href="#" class="forgot-password">
                 Forgot the password?

@@ -4,58 +4,47 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title></title>
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../css/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css" >
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../js/jquery-3.2.1.js"></script>
-    <script src="../js/bootstrap.bundle.js"></script>
-    <script src="../js/menu.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+  	<script type="text/javascript" src="../js/popper.js"></script>
+  	<script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
     <!-- Menu Toggle Script -->
 </head>
 
 <body>
-    <div id="wrapper" class="toggled">
-      <!-- sidemenu -->
-      <!-- <script type="text/javascript" src="sidemenu.html"></script> -->
+  <div id="wrapper" class="active">
+    <!-- Sidebar -->
       <div id="sidebar-wrapper">
-          <ul class="sidebar-nav">
-              <li class="sidebar-brand">
-                  <a href="#">
-                      Menu
-                  </a>
-              </li>
-              <li id="menu-import">
-                  <a href="import.html">取込</a>
-              </li>
-              <li id="menu-pm" >
-                  <a href="productManagement.html">作品管理</a>
-              </li>
-              <li id="menu-user">
-                  <a href="userManagement.html">ユーザ管理</a>
-              </li>
-              <li id="menu-charactor">
-                  <a href="charactor.html">キャラクター検索と印刷</a>
-              </li>
+          <ul id="sidebar_menu" class="sidebar-nav">
+            <li class="sidebar-brand">
+              <a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a>
+            </li>
+          </ul>
+          <ul class="sidebar-nav" id="sidebar">
+              <li><a href="productManagement.html">作品管理<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
+              <li><a href="userManagement.html">ユーザ管理<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
+              <li><a href="charactorManagement.html">キャラクター<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
           </ul>
       </div>
       <!-- Page Content -->
       <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1>create a new user</h1>
+                <!-- <h1>create a new user</h1>
               <a href="./contractUser.html" class="btn" >user  list</a>
               <a href="./newContractUser.html" class="btn" >create new contract user</a>
               <a href="./newUser.html" class="btn" >user  new user </a>
-              <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+              <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
             </div>
         </div>
   </div>
