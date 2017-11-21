@@ -8,24 +8,9 @@ $(function(){
          window.location = "login.html";
     }
 
-
-
-
-
-
-
-
-
-
-
+    G_OBJ.getItem("userId") == "user2" && ( $("#langsel").hide(),$("#userMgrli").hide());
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("active");
       });
-    // $(function() {
-    //     $("#menu-toggle").click(function(e) {
-    //         e.preventDefault();
-    //         $("#wrapper").toggleClass("toggled");
-    //     });
-    //   });
-})
+  })

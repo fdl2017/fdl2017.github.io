@@ -28,6 +28,26 @@
               $(".nav-tabs a").click(function(){
                 $(this).tab('show');
               });
+
+              $("#keyCondition1").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#list1 tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+
+
+              $('#myModal').on('click', '.modal-footer .btn-primary', function() {
+                  // if ($("#dialogTbl").find("input[type='checkbox'][checked]").length== 0 ) {
+                  //   alert("選択のチェックボックスをチェックしてください");
+                  //   return false;
+                  // }
+                  $("#charactorTbody").show();
+                  $('#myModal').modal('hide');
+                  // $("#dialogTbl").find(".checkbox[:checked]").each(function() {
+                  //   $(this).parent().remove
+                  // });
+            });
         });
     </script>
 </head>
@@ -44,7 +64,7 @@
           </ul>
           <ul class="sidebar-nav" id="sidebar">
               <li><a href="productManagement.html">作品管理<span class="sub_icon glyphicon glyphicon-link chat"></span></a></li>
-              <li><a href="userManagement.html">ユーザ管理<span class="sub_icon glyphicon glyphicon-link chat"></span></a></li>
+              <li id="userMgrli"><a href="userManagement.html">ユーザ管理<span class="sub_icon glyphicon glyphicon-link chat"></span></a></li>
               <li><a href="charactorManagement.html">キャラクター<span class="sub_icon glyphicon glyphicon-link chat"></span></a></li>
           </ul>
       </div>
@@ -52,7 +72,7 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container">
+            <div class="container-fluid">
                 <!-- TOP TAB -->
               <ul class="nav nav-tabs">
                   <li class="active"><a href="#menu1">取り込み</a></li>
@@ -81,8 +101,8 @@
                       <div class="panel-body">
                           <div class="form-group">
                                 <label for="name" >キーワード：</label>
-                                <input type="text" id="name" class="form-control"  placeholder="作品名を入力してください"/>
-                                <button class="btn btn-primary btn-lg">search</button>
+                                <input type="text" id="keyCondition1" class="form-control"  placeholder="作品名を入力してください"/>
+                                <!-- <button class="btn btn-primary btn-lg"></button> -->
                           </div>
                           <!-- <div class="form-group">
                             <label for="name" class="control-label col-sm-2">作品名正式名称</label>
@@ -101,9 +121,10 @@
                   </form>
                       <!-- list-->
                   <div class="panel panel-primary table-responsive ">
-                    <div class="panel-heading">一覧</div>
-                      <table class="table table-hover table-bordered">
+                    <div class="panel-heading">作品一覧</div>
+                      <table class="table table-hover table-bordered" >
                         <thead>
+                        <tr>
                         <th>作品ID</th>
                         <th>作品名正式名称</th>
                         <th>英文名称</th>
@@ -113,10 +134,12 @@
                         <th>製作年</th>
                         <th>カテゴリー 尺/話数</th>
                         <th></th>
+                      </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="list1">
                         <tr>
                           <td><a href="productionDetail.html?id=‘aaaa’">aaaa</a></td>
+                          <!-- <td><a href="#" data-toggle="modal" data-target="#myModal2">aaaaaaa</a> </td> -->
                           <td>aaaa</td>
                           <td>aaaa</td>
                           <td>aaaa</td>
@@ -172,7 +195,7 @@
                     <input type="text" id="name" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="name" class="control-label col-sm-2">copyright</label>
                 <div class="col-sm-6">
                     <input type="text" id="name" class="form-control" />
@@ -183,7 +206,7 @@
                 <div class="col-sm-6">
                     <input type="text" id="name" class="form-control" />
                 </div>
-              </div>
+              </div> -->
               <div class="form-group">
                 <label for="name" class="control-label col-sm-2">製作年</label>
                 <div class="col-sm-6">
@@ -196,11 +219,55 @@
                     <input type="text" id="name" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-6">
-                    <button class="btn btn-primary btn-lg">登録</button>
-                </div>
+              <div class="">
+                  <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">キャラクタ選択</button>
               </div>
+              <div class="panel panel-primary table-responsive ">
+                <div class="panel-heading">キャラクタ一覧</div>
+                <div class="panel-body">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                  <th>ID</th>
+                  <th>画像</th>
+                  <th>言語</th>
+                  <th>タイプ</th>
+                  <th>種類</th>
+                  <th>基本情報</th>
+                  <th>技能</th>
+                  <th>技能紹介</th>
+                </tr>
+                </thead>
+                <tbody id="charactorTbody" style="display:none">
+                  <tr>
+                    <td>id1</td>
+                    <td>a2222</td>
+                    <td>aa333</td>
+                    <td>aa444</td>
+                    <td>aa555</td>
+                    <td>aa666</td>
+                    <td>aaaa</td>
+                    <td>aaaa</td>
+                  </tr>
+                  <tr>
+                   <td>id2</td>
+                    <td>bbbb1ssssssssssssss</td>
+                    <td>bbbb2sssssssssss</td>
+                    <td>bbbb3sdfdsfds</td>
+                    <td>bbbb4</td>
+                    <td>bbbb5</td>
+                    <td>bbbb6</td>
+                    <td>bbbb799ddsssssssssssssssssssssssss</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-6">
+                  <button class="btn btn-primary btn-lg">登録</button>
+              </div>
+            </div>
             </form>
             </div>
           </div>
@@ -208,6 +275,145 @@
     </div>
         <!-- /#page-content-wrapper -->
 
+
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog dialog-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">キャラクタ検索</h4>
+          </div>
+          <div class="modal-body">
+              <form class="form-horizontal">
+                  <!--search -->
+                    <div class="form-group">
+                        <label for="name" class="control-label col-sm-3">キーワード：</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="condition" class="form-control"  placeholder="キャラクタ名称、技能名称を入力してください"/>
+                        </div>
+                      </div>
+                      <div class="form-group" id="langsel">
+                        <label for="name" class="control-label col-sm-3">言語：</label>
+                        <div class="col-sm-4" >
+                            <select  id="language" class="form-control" >
+                                <option>日本語</option>
+                                <option>中国語</option>
+                                <option>英語</option>
+                            </select>
+                        </div>
+                      </div>
+               </form>
+                  <!-- list-->
+                <div class="table-responsive" id="dialogTbl">
+                  <table class="table table-hover table-bordered">
+                    <thead>
+                    <th>ID</th>
+                    <th>画像</th>
+                    <th>言語</th>
+                    <th>タイプ</th>
+                    <th>種類</th>
+                    <th>基本情報</th>
+                    <th>技能</th>
+                    <th>技能紹介</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox" checked /></td>
+                      <td>id1</td>
+                      <td>a2222</td>
+                      <td>aa333</td>
+                      <td>aa444</td>
+                      <td>aa555</td>
+                      <td>aa666</td>
+                      <td>aaaa</td>
+                      <td>aaaa</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" checked/></td>
+                      <td>id2</td>
+                      <td>bbbb1ssssssssssssss</td>
+                      <td>bbbb2sssssssssss</td>
+                      <td>bbbb3sdfdsfds</td>
+                      <td>bbbb4</td>
+                      <td>bbbb5</td>
+                      <td>bbbb6</td>
+                      <td>bbbb799ddsssssssssssssssssssssssss</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">選択</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+        </div>
+      </div><!-- model -->
+
+      <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">作品詳細</h4>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="well">
+                <label>作品ID:XXXX</label>
+                <label>作品名称:XXXX</label>
+              </div>
+              <div class="panel panel-primary table-responsive ">
+                <div class="panel-heading">キャラクタ一覧</div>
+                <div class="panel-body">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                  <th>ID</th>
+                  <th>画像</th>
+                  <th>言語</th>
+                  <th>タイプ</th>
+                  <th>種類</th>
+                  <th>基本情報</th>
+                  <th>技能</th>
+                  <th>技能紹介</th>
+                </tr>
+                </thead>
+                <tbody id="charactorTbody" >
+                  <tr>
+                    <td>id1</td>
+                    <td>a2222</td>
+                    <td>aa333</td>
+                    <td>aa444</td>
+                    <td>aa555</td>
+                    <td>aa666</td>
+                    <td>aaaa</td>
+                    <td>aaaa</td>
+                  </tr>
+                  <tr>
+                   <td>id2</td>
+                    <td>bbbb1ssssssssssssss</td>
+                    <td>bbbb2sssssssssss</td>
+                    <td>bbbb3sdfdsfds</td>
+                    <td>bbbb4</td>
+                    <td>bbbb5</td>
+                    <td>bbbb6</td>
+                    <td>bbbb799ddsssssssssssssssssssssssss</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+</div>
     </div>
     <!-- /#wrapper -->
 </form>

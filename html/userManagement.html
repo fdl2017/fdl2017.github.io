@@ -20,6 +20,13 @@
   	<script type="text/javascript" src="../js/bootstrap.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
     <!-- Menu Toggle Script -->
+    <script>
+    $(function(){
+      $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+      });
+    });
+   </script>
 </head>
 
 <body>
@@ -40,13 +47,157 @@
       <!-- Page Content -->
       <div id="page-content-wrapper">
             <div class="container-fluid">
-                <!-- <h1>create a new user</h1>
-              <a href="./contractUser.html" class="btn" >user  list</a>
-              <a href="./newContractUser.html" class="btn" >create new contract user</a>
-              <a href="./newUser.html" class="btn" >user  new user </a>
-              <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
+              <!-- TOP TAB -->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#menu1">ユーザ一覧</a></li>
+                    <li ><a href="#menu2" >新規ユーザ</a></li>
+                    <li ><a href="#menu3" >新規契約者ユーザ</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="menu1" class="tab-pane fade in active">
+
+                    </div>
+
+                    <div id="menu2" class="tab-pane fade">
+                      <form class="form-horizontal" >
+                          <div class="form-group">
+                              <label for="name" class="control-label col-sm-2">ユーザID</label>
+                              <div class="col-sm-6">
+                                  <input type="text" id="name" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="name" class="control-label col-sm-2">パースワード</label>
+                              <div class="col-sm-6">
+                                  <input type="password" id="password" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="name" class="control-label col-sm-2">ユーザ名</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="name" class="form-control" />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-6">
+                                <input type="button" id="name" class="btn btn-primary btn-lg" value="登録"/>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+
+                    <div id="menu3" class="tab-pane fade">
+                      <form class="form-horizontal" >
+                          <div class="form-group">
+                              <label for="name" class="control-label col-sm-2">契約者ID</label>
+                              <div class="col-sm-6">
+                                  <input type="text" id="name" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="name" class="control-label col-sm-2">パースワード</label>
+                              <div class="col-sm-6">
+                                  <input type="password" id="password" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="name" class="control-label col-sm-2">契約者名</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="name" class="form-control" />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="name" class="control-label col-sm-2">言語</label>
+                            <div class="col-sm-6">
+                                <select  class="form-control" >
+                                  <option>日本語</option>
+                                  <option>中国語</option>
+                                  <option>英語</option>
+                                </select>
+                            </div>
+                          </div>
+
+
+                            <!-- <div class="row">
+                              <div class="col-xs-3">作品ID</div>
+                              <div class="col-xs-3">作品名</div>
+                            </div> -->
+                          <div class="container table-responsive" >
+                          <table class="table table-bordered">
+                              <thead>
+                                <th class="info">作品ID</th>
+                                <th class="info">作品名</th>
+                                <th class="info">製作年</th>
+                                <th class="info"></th>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td><input type="button" class="btn btn-info btn-sm" value="追加"/></td>
+                                </tr>
+                              </tbody>
+                          </table>
+                        </div>
+
+                         <div class="form-group">
+                          <div class="col-sm-offset-2 col-sm-6">
+                              <input type="button" id="name" class="btn btn-primary btn-lg" value="登録"/>
+                          </div>
+                        </div>
+                    </form>
+                    </div>
+
+
+                </div>
             </div>
         </div>
+
+
+        <!-- <div class="panel panel-primary table-responsive ">
+          <div class="panel-heading">作品一覧</div>
+            <table class="table table-hover table-bordered">
+              <thead>
+              <th>作品ID</th>
+              <th>作品名正式名称</th>
+              <th>英文名称</th>
+              <th>日本語コピーライト</th>
+              <th>copyright</th>
+              <th>Short copyright</th>
+              <th>製作年</th>
+              <th>カテゴリー 尺/話数</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="productionDetail.html?id=‘aaaa’">aaaa</a></td>
+                <td>aaaa</td>
+                <td>aaaa</td>
+                <td>aaaa</td>
+                <td>aaaa</td>
+                <td>aaaa</td>
+                <td>aaaa</td>
+                <td>aaaa</td>
+                <td><a href="updateProduction.html?id='aaaa'" class="btn btn-default">編集</a></td>
+              </tr>
+              <tr>
+                <td><a href="productionDetail.html?id='bbbb'">bbbb</a></td>
+                <td>bbbb</td>
+                <td>bbbb</td>
+                <td>bbbb</td>
+                <td>bbbb</td>
+                <td>bbbb</td>
+                <td>bbbb</td>
+                <td>bbbb</td>
+                <td><a href="updateProduction.html?id='aaaa'" class="btn btn-default">編集</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div> -->
   </div>
 </body>
 

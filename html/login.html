@@ -27,11 +27,10 @@
 			var userObj = {"admin":"admin","user1":"user1","user2":"user2"};
 			$(function(){
 				$("#btnlogin").on("click",function(){
+					$("#msg").addClass("hidden");
 					if (!userObj[$("#id").val()+""] || $("#password").val() != userObj[$("#id").val()+""]) {
-						BootstrapDialog.show({
-            	message: "ユーザIDまたはパースワードは間違えた"
-        		});
-						return;
+						$("#msg").removeClass("hidden");
+						return false;
 					}
 					G_OBJ = window.sessionStorage;
 					G_OBJ.setItem("userId",$("#id").val());
@@ -55,20 +54,24 @@
            <!--  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" /> -->
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" >
-                <span id="reauth-email" class="reauth-email"></span>
+                <!-- <span id="reauth-email" class="reauth-email"></span> -->
                 <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
-                <input type="text" id="id" class="form-control" placeholder="ユーザIDを入力してください" required autofocus />
+								<div id="msg" class="alert alert-danger hidden">
+  								ユーザIDまたはパースワードが間違えた
+								</div>
+
+								<input type="text" id="id" class="form-control" placeholder="ユーザIDを入力してください" required autofocus />
                 <input type="password" id="password" class="form-control" placeholder="パースワードを入力してください" required>
-                <div id="remember" class="checkbox">
+                <!-- <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin"  id="btnlogin">Sign in</button>
+                </div> -->
+                <button class="btn btn-lg btn-primary btn-block btn-signin"  id="btnlogin" >ログイン</button>
             </form><!-- /form -->
-            <a href="#" class="forgot-password">
+            <!-- <a href="#" class="forgot-password">
                 Forgot the password?
-            </a>
+            </a> -->
         </div><!-- /card-container -->
     </div><!-- /container -->
 
