@@ -25,26 +25,14 @@ $(function () {
       // { id: "menu3", href: "charactorManagement.html", text: "チャラクタ管理" }
     ]
   };
-  // var productionListData = {
-  //   ths: productionlist && productionlist["title"] ? productionlist["title"] :[
-  //     "作品名正式名称",
-  //     "英文名称",
-  //     "日本語コピーライト",
-  //     "copyright",
-  //     "Short copyright",
-  //     "製作年",
-  //     "カテゴリー","尺/話数"],
-  //   trs: productionlist && productionlist["list"] ? productionlist["list"] : [[]]
-  // };
-  //console.debug(productionListData["trs"]);
 
   Vue.component('menu-component', {
     template: '<div id="sidebar-wrapper">\
       <ul class="sidebar-nav" id="sidebarNav">\
         <ul id="sidebar_menu" class="sidebar-nav">\
           <li class="sidebar-brand">\
-            <a id="menu-toggle" href="#">Menu\
-              <span id="main_icon" class="glyphicon glyphicon-align-justify chat"></span>\
+            <a id="menu-toggle" href="#">メニュー\
+              <span id="main_icon" class="glyphicon glyphicon-align-justify chat" tdata-toggle="tooltip" title="メニュー"></span>\
             </a>\
           </li>\
         </ul>\
@@ -69,14 +57,23 @@ $(function () {
   //====================
   // Menu click event
   //====================
+  $("#wrapper").removeClass("active")
+  if (G_OBJ.getItem("class") === "active") {
+    $("#wrapper").addClass("active");
+  }
   $("#menu-toggle").click(function (e) {
     e.preventDefault();
     $("#wrapper").toggleClass("active");
+    if ( $("#wrapper").hasClass("active") ) {
+      G_OBJ.setItem("class","active");
+    } else {
+      G_OBJ.setItem("class","");
+    }
   });
 
   $('[data-toggle="tooltip"]').tooltip();
 
-
+  
 })
 
 
