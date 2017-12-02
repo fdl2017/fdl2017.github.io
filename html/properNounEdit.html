@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>固有名詞詳細</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+
+  <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../js/productionlist.js"></script>
+  <script type="text/javascript" src="../js/popper.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script src="../js/jquery.uploadThumbs.js"></script>
+  <style>
+    textarea {
+      width:800px;
+      height:140px;
+    }
+  </style>
+  <script>
+    $(function () {
+
+
+      var menuv = new Vue({
+        el: '#productionDetail1',
+        data: {
+          //ths: charactorList && charactorList["titles"] ? charactorList["titles"] : [],
+          //trs: charactorList && charactorList["list"] ? charactorList["list"] : [[]],
+          selectItem: G_FUNC.makeUpdateProductionData(1)
+        }
+      });
+
+      // function getSelectItem() {
+      //   var id = window.location.href.
+      // }
+         // jQuery Upload Thumbs 
+      $('#upload1').uploadThumbs({
+          position : "#picPreview",      // 0:before, 1:after, 2:parent.prepend, 3:parent.append,
+                            // any: arbitrarily jquery selector
+          imgbreak : true    // append <br> after thumbnail images
+      });
+
+    });
+
+  </script>
+</head>
+
+<body>
+
+  <div id="wrapper" class="active">
+    <!-- Sidebar -->
+    <div id="menuDiv">
+      <menu-component></menu-component>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container" id="productionDetail1">
+
+        <!-- <div class="row"> -->
+          <!-- Left-aligned -->
+          <div class="media">
+            <div class="media-left media-middle">
+              <div id="picPreview"><img src="../img/hero1.png"></div>
+              <ul>
+                  <li>
+                      <label>
+                          <input type="file" id="upload1" name="images[]" multiple="multiple" />
+                      </label>
+                  </li>
+              </ul>
+            </div>
+            <div class="media-body">
+              <h4>基本情報</h4>
+              <span>身高:<input type="text" value="53m"/></span>
+              <span>体重:<input type="text" value="44000t"/> </span>
+              <hr>
+              <h4>紹介</h4>
+              <textarea>ウルトラマンティガの基本タイプで、スピードとパワーのバランスがいい。通常はこの姿で活動し、数々の特殊能力で邪悪な存在を粉砕していく。 人間ウルトラマンであるティガは、ダイゴそのものである。そのため、ダイゴの戦闘経験がダイレクトにティガの戦闘力に反映される。マルチタイプの戦闘はその名の通り万能で、パワー、スピードのバランスのとれた動きで様々な技を炸裂させている。
+              </textarea>
+              <hr>
+            </div>
+          </div>
+        <!-- </div> -->
+        <div class="media">
+            <div class="media-left media-middle">
+                <img src="../img/skill1.png" style="width:100px;height:100px;">
+            </div>
+            <div class="media-body">
+
+                <h4 class="media-heading　btn ">技能<span class="badge">１</span></h4><h4>ゼペリオン光線</h4>
+                <textarea>  マルチタイプの必殺技だ。L字型に組んだ両腕から全エネルギーを一気に打つ。一撃で敵の体を貫くほどの威力だし、破壊力抜群の光線だ。切り札として使用する。
+                </textarea>
+                <audio controls>
+                    <source src="../audio/skill1.wav">
+                  Your browser does not support the audio element.
+                </audio>
+                <a type="button" class="btn btn-default btn-sm" href="../audio/skill1.wav">
+                    <span class="glyphicon glyphicon-download-alt" >Download </span> 
+                </a>
+            </div>
+        </div>
+      </div>
+
+     <hr>
+     <div class="container">
+        <div class="form-group">        
+          <button class="btn btn-primary btn-sm" onclick="window.location='properNoun.html'">    戻る   </button>
+          <button class="btn btn-primary btn-sm" onclick="window.location='properNoun.html'">    保存   </button>
+        </div>
+    </div>
+
+    </div>
+     
+
+  </div>
+  <!-- /#page-content-wrapper -->
+
+  <!-- /#wrapper -->
+
+
+</body>
+
+</html>

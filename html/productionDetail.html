@@ -3,95 +3,82 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+  <title>作品詳細</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/main.css" >
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
 
-    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
-  	<script type="text/javascript" src="../js/popper.js"></script>
-  	<script type="text/javascript" src="../js/bootstrap.js"></script>
-  	<script type="text/javascript" src="../js/bootstrap.bundle.js"></script>
-    <script type="text/javascript" src="../js/main.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../js/productionlist.js"></script>
+  <script type="text/javascript" src="../js/popper.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script>
+    $(function () {
+      var menuv = new Vue({
+        el: '#productionDetail1',
+        data: {
+          ths: charactorList && charactorList["titles"] ? charactorList["titles"] : [],
+          trs: charactorList && charactorList["list"] ? charactorList["list"] : [[]],
+          items:G_FUNC.makeUpdateProductionData()
+        }
+      });
+
+
+    });
+
+  </script>
 </head>
 
 <body>
 
   <div id="wrapper" class="active">
     <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-          <ul id="sidebar_menu" class="sidebar-nav">
-            <li class="sidebar-brand">
-              <a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify chat"></span></a>
-            </li>
-          </ul>
-          <ul class="sidebar-nav" id="sidebar">
-              <li><a href="productManagement.html">作品管理<span class="sub_icon glyphicon glyphicon-link chat"></span></a></li>
-              <li id="userMgrli"><a href="userManagement.html">ユーザ管理<span class="sub_icon glyphicon glyphicon-link chat"></span></a></li>
-              <li><a href="charactorManagement.html">キャラクター<span class="sub_icon glyphicon glyphicon-link chat"></span></a></li>
-          </ul>
-      </div>
-        <!-- /#sidebar-wrapper -->
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container">
-                <h1>作品詳細</h1>
-                <div class="well">
-                  <label>作品ID:XXXX</label>
-                  <label>作品名称:XXXX</label>
-                </div>
-                <div class="panel panel-primary table-responsive ">
-                  <div class="panel-heading">キャラクタ一覧</div>
-                  <div class="panel-body">
-                  <table class="table table-hover table-bordered">
-                    <thead>
-                      <tr>
-                    <th>ID</th>
-                    <th>画像</th>
-                    <th>言語</th>
-                    <th>タイプ</th>
-                    <th>種類</th>
-                    <th>基本情報</th>
-                    <th>技能</th>
-                    <th>技能紹介</th>
-                  </tr>
-                  </thead>
-                  <tbody id="charactorTbody" >
-                    <tr>
-                      <td>id1</td>
-                      <td>a2222</td>
-                      <td>aa333</td>
-                      <td>aa444</td>
-                      <td>aa555</td>
-                      <td>aa666</td>
-                      <td>aaaa</td>
-                      <td>aaaa</td>
-                    </tr>
-                    <tr>
-                     <td>id2</td>
-                      <td>bbbb1ssssssssssssss</td>
-                      <td>bbbb2sssssssssss</td>
-                      <td>bbbb3sdfdsfds</td>
-                      <td>bbbb4</td>
-                      <td>bbbb5</td>
-                      <td>bbbb6</td>
-                      <td>bbbb799ddsssssssssssssssssssssssss</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              </div>
-            </div>
-
-
+    <div id="menuDiv">
+      <menu-component></menu-component>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper" >
+      <div class="container-fluid" id="productionDetail1">
+        <h1>作品詳細</h1>
+        <div class="well">
+          <div v-for="item in items"><strong>{{item.title}}</strong>:{{item.value}}</div>
         </div>
-        <!-- /#page-content-wrapper -->
+
+        <div class="panel panel-primary table-responsive ">
+          <div class="panel-heading">キャラクタ一覧</div>
+          <div class="panel-body">
+            <table class="table table-hover table-bordered" >
+              <thead>
+                <tr>
+                  <th v-for="th in ths">{{th}}</th>
+                </tr>
+              </thead>
+              <tbody id="charactorTbody">
+                <tr v-for="tr in trs">
+                  <td v-for="(td,index) in tr.data">
+                    <img v-bind:src="'../img/'+td" width="50px" height="50px" v-if="index == 1"></img>
+                    <label v-if="index != 1">{{td}}</label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>            
+          </div>          
+        </div>
+        <div  class="center-block" ><button class="btn btn-primary btn-lg" onclick="window.location='productManagement.html'">戻る</button></div>
+      </div>
+
+      
+    </div>
+    <!-- /#page-content-wrapper -->
 
     <!-- /#wrapper -->
 

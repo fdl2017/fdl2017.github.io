@@ -3,161 +3,205 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title></title>
+  <title>ユーザ管理</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/main.css" >
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
 
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
-  	<script type="text/javascript" src="../js/popper.js"></script>
-  	<script type="text/javascript" src="../js/bootstrap.js"></script>
-    <script type="text/javascript" src="../js/main.js"></script>
-    <!-- Menu Toggle Script -->
-    <script>
-    $(function(){
-      $(".nav-tabs a").click(function(){
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../js/productionlist.js"></script>
+  <script type="text/javascript" src="../js/popper.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <!-- Menu Toggle Script -->
+  <script>
+    $(function () {
+      $(".nav-tabs a").click(function () {
         $(this).tab('show');
       });
+
+
+      var menuv = new Vue({
+                el: '#forminfo2',
+                data:{
+                    items:contractUserFields
+                }
+            });
     });
-   </script>
+  </script>
 </head>
 
 <body>
   <div id="wrapper" class="active">
     <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-          <ul id="sidebar_menu" class="sidebar-nav">
-            <li class="sidebar-brand">
-              <a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a>
-            </li>
-          </ul>
-          <ul class="sidebar-nav" id="sidebar">
-              <li><a href="productManagement.html">作品管理<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-              <li><a href="userManagement.html">ユーザ管理<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-              <li><a href="charactorManagement.html">キャラクター<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-          </ul>
-      </div>
-      <!-- Page Content -->
-      <div id="page-content-wrapper">
-            <div class="container-fluid">
-              <!-- TOP TAB -->
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#menu1">ユーザ一覧</a></li>
-                    <li ><a href="#menu2" >新規ユーザ</a></li>
-                    <li ><a href="#menu3" >新規契約者ユーザ</a></li>
-                </ul>
+    <div id="menuDiv"><menu-component></menu-component></div>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <!-- TOP TAB -->
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#menu1">ユーザ一覧</a>
+          </li>
+          <li>
+            <a href="#menu2">新規ユーザ</a>
+          </li>
+          <li>
+            <a href="#menu3">新規契約者ユーザ</a>
+          </li>
+        </ul>
 
-                <div class="tab-content">
-                    <div id="menu1" class="tab-pane fade in active">
+        <div class="tab-content">
+          <div id="menu1" class="tab-pane fade in active">
+            <table class="table table-striped">
+              <thead>
+                  <th>ユーザID</th>
+                  <th>ユーザ名</th>
+                  <th>ユーザ種別</th>
+                  <th></th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>admin</td>
+                      <td>admin</td>
+                      <td>管理者</td>
+                      <td><input type="button" value="変更" class="btn disabled" /><input type="button" value="削除" class="btn disabled" /></td>
+                    </tr>
+                <tr>
+                  <td>user1</td>
+                  <td>user1</td>
+                  <td>社員ユーザ</td>
+                  <td><input type="button" value="変更" class="btn btn-default" /><input type="button" value="削除" class="btn btn-default"/></td>
+                </tr>
+                <tr>
+                    <td>user2</td>
+                    <td>user2</td>
+                    <td>契約者</td>
+                    <td><input type="button" value="変更" class="btn btn-default" /><input type="button" value="削除" class="btn btn-default" /></td>
+                  </tr>
+              </tbody>
 
-                    </div>
+            </table>
+          </div>
 
-                    <div id="menu2" class="tab-pane fade">
-                      <form class="form-horizontal" >
-                          <div class="form-group">
-                              <label for="name" class="control-label col-sm-2">ユーザID</label>
-                              <div class="col-sm-6">
-                                  <input type="text" id="name" class="form-control" />
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="name" class="control-label col-sm-2">パースワード</label>
-                              <div class="col-sm-6">
-                                  <input type="password" id="password" class="form-control" />
-                              </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="name" class="control-label col-sm-2">ユーザ名</label>
-                            <div class="col-sm-6">
-                                <input type="text" id="name" class="form-control" />
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-6">
-                                <input type="button" id="name" class="btn btn-primary btn-lg" value="登録"/>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-
-
-                    <div id="menu3" class="tab-pane fade">
-                      <form class="form-horizontal" >
-                          <div class="form-group">
-                              <label for="name" class="control-label col-sm-2">契約者ID</label>
-                              <div class="col-sm-6">
-                                  <input type="text" id="name" class="form-control" />
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="name" class="control-label col-sm-2">パースワード</label>
-                              <div class="col-sm-6">
-                                  <input type="password" id="password" class="form-control" />
-                              </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="name" class="control-label col-sm-2">契約者名</label>
-                            <div class="col-sm-6">
-                                <input type="text" id="name" class="form-control" />
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="name" class="control-label col-sm-2">言語</label>
-                            <div class="col-sm-6">
-                                <select  class="form-control" >
-                                  <option>日本語</option>
-                                  <option>中国語</option>
-                                  <option>英語</option>
-                                </select>
-                            </div>
-                          </div>
+          <div id="menu2" class="tab-pane fade">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="name" class="control-label col-sm-2">ユーザID</label>
+                <div class="col-sm-6">
+                  <input type="text" id="name" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name" class="control-label col-sm-2">パスワード</label>
+                <div class="col-sm-6">
+                  <input type="password" id="password" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name" class="control-label col-sm-2">ユーザ名</label>
+                <div class="col-sm-6">
+                  <input type="text" id="name" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                  <input type="button" id="name" class="btn btn-primary btn-lg" value="登録" />
+                </div>
+              </div>
+            </form>
+          </div>
 
 
-                            <!-- <div class="row">
+          <div id="menu3" class="tab-pane fade">
+            <form class="form-horizontal" id="forminfo2">
+              <div class="form-group">
+                <label for="name" class="control-label col-sm-2">契約者ID</label>
+                <div class="col-sm-6">
+                  <input type="text" id="name" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group" v-for="el in items" >
+                  <label for="name" class="control-label col-sm-2">{{el.title}}</label>
+                  <div class="col-sm-6">
+                          <input type="text" id="name" class="form-control" v-bind:value="el.value" />
+                  </div>
+            </div>
+              <!-- <div class="form-group">
+                <label for="name" class="control-label col-sm-2">パースワード</label>
+                <div class="col-sm-6">
+                  <input type="password" id="password" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name" class="control-label col-sm-2">契約者名</label>
+                <div class="col-sm-6">
+                  <input type="text" id="name" class="form-control" />
+                </div>
+              </div> -->
+              <div class="form-group">
+                <label for="name" class="control-label col-sm-2">言語</label>
+                <div class="col-sm-6">
+                  <!-- <select class="form-control">
+                    <option>日本語</option>
+                    <option>中国語</option>
+                    <option>英語</option>
+                  </select> -->
+                  <label class="checkbox-inline"><input type="checkbox" value="">日本語</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="">中国語</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="">英語</label>
+                </div>
+              </div>
+
+
+              <!-- <div class="row">
                               <div class="col-xs-3">作品ID</div>
                               <div class="col-xs-3">作品名</div>
                             </div> -->
-                          <div class="container table-responsive" >
-                          <table class="table table-bordered">
-                              <thead>
-                                <th class="info">作品ID</th>
-                                <th class="info">作品名</th>
-                                <th class="info">製作年</th>
-                                <th class="info"></th>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td><input type="button" class="btn btn-info btn-sm" value="追加"/></td>
-                                </tr>
-                              </tbody>
-                          </table>
-                        </div>
+              <div class="container table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <th class="info">作品ID</th>
+                    <th class="info">作品名</th>
+                    <th class="info">製作年</th>
+                    <th class="info"></th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="button" class="btn btn-info btn-sm" value="追加" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
-                         <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-6">
-                              <input type="button" id="name" class="btn btn-primary btn-lg" value="登録"/>
-                          </div>
-                        </div>
-                    </form>
-                    </div>
-
-
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                  <input type="button" id="name" class="btn btn-primary btn-lg" value="登録" />
                 </div>
-            </div>
+              </div>
+            </form>
+          </div>
+
+
         </div>
+      </div>
+    </div>
 
 
-        <!-- <div class="panel panel-primary table-responsive ">
+    <!-- <div class="panel panel-primary table-responsive ">
           <div class="panel-heading">作品一覧</div>
             <table class="table table-hover table-bordered">
               <thead>

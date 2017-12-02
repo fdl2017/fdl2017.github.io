@@ -16,95 +16,73 @@
     <!-- Custom styles for this template -->
     <link href="../css/main.css" rel="stylesheet">
 
+    <script type="text/javascript" src="../js/productionlist.js"></script>
     <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
-  	<script type="text/javascript" src="../js/popper.js"></script>
-  	<script type="text/javascript" src="../js/bootstrap.js"></script>
+    
+    <script type="text/javascript" src="../js/popper.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        $(function () {          
+            // Vue.component('form-component',{
+            // template:'<div class="form-group" v-for="el in formEles" >\
+            //         <label for="name" class="control-label col-sm-2">{{ el.text }}</label>\
+            //         <div class="col-sm-6">\
+            //             <input type="text" v-bind:id="el.name" class="form-control"  v-bind:value="el.value" />\
+            //         </div>\
+            //         </div>'
+            //  });
+            var menuv = new Vue({
+                el: '#forminfo',
+                data:{
+                    items:G_FUNC.makeUpdateProductionData()
+                }
+            });
+        });
+        
+
+    </script>
 </head>
 
 <body>
 
-  <div id="wrapper" class="active">
-    <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-          <ul id="sidebar_menu" class="sidebar-nav">
-            <li class="sidebar-brand">
-              <a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a>
-            </li>
-          </ul>
-          <ul class="sidebar-nav" id="sidebar">
-              <li><a href="productManagement.html">作品管理<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-              <li id="userMgrli"><a href="userManagement.html">ユーザ管理<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-              <li><a href="charactorManagement.html">キャラクター<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-          </ul>
-      </div>
+    <div id="wrapper" class="active">
+        <!-- Sidebar -->
+        <div id="menuDiv"><menu-component></menu-component></div>
         <!-- /#sidebar-wrapper -->
-<form class="form-horizontal">
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <h3>作品詳細</h3>
-                <div class="form-group">
-                  <label for="name" class="control-label col-sm-2">作品ID</label>
-                  <div class="col-sm-6">
-                      <input type="text" id="name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="control-label col-sm-2">作品名正式名称</label>
-                  <div class="col-sm-6">
-                      <input type="text" id="name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="control-label col-sm-2">英文名称</label>
-                  <div class="col-sm-6">
-                      <input type="text" id="name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="control-label col-sm-2">日本語コピーライト</label>
-                  <div class="col-sm-6">
-                      <input type="text" id="name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="control-label col-sm-2">copyright</label>
-                  <div class="col-sm-6">
-                      <input type="text" id="name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="control-label col-sm-2">Short copyright</label>
-                  <div class="col-sm-6">
-                      <input type="text" id="name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="control-label col-sm-2">製作年</label>
-                  <div class="col-sm-6">
-                      <input type="text" id="name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="control-label col-sm-2">カテゴリー 尺/話数</label>
-                  <div class="col-sm-6">
-                      <input type="text" id="name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-6">
-                      <button class="btn btn-primary">更新</button>
-                      <button class="btn btn-primary">削除</button>
-                  </div>
+        <form class="form-horizontal">
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid" id="forminfo">
+                    <h3>作品詳細</h3>
+                    <div class="form-group">
+                        <label for="name" class="control-label col-sm-2">作品ID</label>
+                        <div class="col-sm-6">
+                            <input type="text" id="name" class="form-control" />
+                        </div>
+                    </div>
+                    <!-- <form-component></form-component> -->
+                    <div class="form-group" v-for="el in items" >
+                            <label for="name" class="control-label col-sm-2">{{el.title}}</label>
+                            <div class="col-sm-6">
+                                    <input type="text" id="name" class="form-control" v-bind:value="el.value" />
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <button class="btn btn-primary">更新</button>
+                            <button class="btn btn-primary">削除</button>
+                            <input type="button" class="btn btn-primary" value="戻る" onclick="window.location='productManagement.html'"></input>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+            <!-- /#page-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
-</div>
+    </div>
 
 </body>
 

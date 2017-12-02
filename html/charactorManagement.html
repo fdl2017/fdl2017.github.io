@@ -3,60 +3,114 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title></title>
+  <title></title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link  href="../css/main.css" rel="stylesheet" >
-    <!-- Custom styles for this template -->
-    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../js/popper.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.js"></script>
-    <script type="text/javascript" src="../js/main.js"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <link href="../css/main.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../js/productionlist.js"></script>
+  <script type="text/javascript" src="../js/popper.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
+  <script type="text/javascript" src="../js/vue.js"></script>
 
-    <script>
-      $(function(){
-          G_OBJ.getItem("userId") == "user2" && $("#langsel").hide();
+  <script>
+    $(function () {
+      G_OBJ.getItem("userId") == "user2" && $("#langsel").hide();
 
-          $("#keyCondition1").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#list1 tr").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-          });
+      $("#keyCondition1").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        var value2 = $("#language option:selected").text();
+        $("#list1 tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1 && $(this).text().toLowerCase().indexOf(value2) > -1)
+        });
       });
 
-    </script>
+      $(".nav-tabs a").click(function () {
+        $(this).tab('show');
+      });
+      var menuv = new Vue({
+        el: '#wrapper',
+        data: {
+          ths: charactorList && charactorList["titles"] ? charactorList["titles"] : [],
+          trs: charactorList && charactorList["list"] ? charactorList["list"] : [[]],
+          items: G_FUNC.makeUpdateProductionData(),
+          selectItem: { data: ["", "", "", "", "", "", "", "", "", "", ""] },
+          test: ""
+        },
+        methods: {
+          showModel: function (index, id) {
+            var id = (id + "").replace(/\D/g, "");
+            this.selectItem = charactorList["list"][index];
+            test = "ooooooooooooooo";
+            $('#myModal').modal('show');
+          }
+        }
+      });
+
+      // var model = new Vue({
+      //   el:"#myModal",
+      //   data:{
+      //     selectItem:{},
+      //     test:""
+      //   },
+      //   methods:{
+      //     showModel:function(id) {
+      //       var id = (id+"").replace(/\D/g,"");
+      //       this.selectItem = getSelItem(id);
+      //       test="ooooooooooooooo";
+      //       $('#myModal').modal('show');
+      //     }
+      //   }
+      // });
+
+      // function getSelItem(index,id) {
+      //   var list = charactorList["list"][index];
+      //   for (var i=0;i<list.length;i++) {
+      //     if (list[i].id == id) {
+      //       return list[i];
+      //     }
+      //   }
+      //   return {};
+      // }
+
+    });
+
+  </script>
 </head>
 
 <body>
 
   <div id="wrapper" class="active">
     <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-          <ul id="sidebar_menu" class="sidebar-nav">
-            <li class="sidebar-brand">
-              <a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a>
-            </li>
-          </ul>
-          <ul class="sidebar-nav" id="sidebar">
-              <li><a href="productManagement.html">作品管理<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-              <li id="userMgrli"><a href="userManagement.html">ユーザ管理<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-              <li><a href="charactorManagement.html">キャラクタ<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-          </ul>
-      </div>
-        <!-- /#sidebar-wrapper -->
+    <div id="menuDiv">
+      <menu-component></menu-component>
+    </div>
+    <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container">
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#menu1">キャラクタ一覧</a>
+          </li>
+          <li>
+            <a href="#menu2">新規キャラクタ</a>
+          </li>
+        </ul>
 
-          <form class="form-horizontal">
+        <div class="tab-content">
+          <!-- tab1-->
+          <div id="menu1" class="tab-pane fade in active">
+            <form class="form-horizontal">
               <!--search -->
               <div class="panel panel-primary ">
                 <div class="panel-heading">検索条件</div>
@@ -64,70 +118,95 @@
                   <div class="form-group">
                     <label for="name" class="control-label col-sm-2">キーワード：</label>
                     <div class="col-sm-8">
-                        <input type="text" id="keyCondition1" class="form-control"  placeholder="キャラクタ名称、技能名称を入力してください"/>
+                      <input type="text" id="keyCondition1" class="form-control" placeholder="キャラクタ名称、技能名称を入力してください" />
                     </div>
                   </div>
                   <div class="form-group" id="langsel">
                     <label for="name" class="control-label col-sm-2">言語：</label>
-                    <div class="col-sm-2" >
-                        <select  id="language" class="form-control" >
-                            <option>日本語</option>
-                            <option>中国語</option>
-                            <option>英語</option>
-                        </select>
+                    <div class="col-sm-2">
+                      <select id="language" class="form-control">
+                        <option>日本語</option>
+                        <option>中国語</option>
+                        <option>英語</option>
+                      </select>
                     </div>
                   </div>
                 </div>
               </div>
-         </form>
-                <!-- list-->
-              <div class="panel panel-primary table-responsive ">
-                <div class="panel-heading">キャラクタ一覧</div>
-                <div class="panel-body">
-                <table class="table table-hover table-bordered" >
+            </form>
+
+            <!-- list-->
+            <div class="panel panel-primary table-responsive ">
+              <div class="panel-heading">キャラクタ一覧</div>
+              <div class="panel-body">
+                <table class="table table-hover table-bordered" id="charatorList">
                   <thead>
-                  <th>ID</th>
-                  <th>画像</th>
-                  <th>言語</th>
-                  <th>タイプ</th>
-                  <th>種類</th>
-                  <th>基本情報</th>
-                  <th>技能</th>
-                  <th>技能紹介</th>
-                </thead>
-                <tbody id="list1">
-                  <tr>
-                    <td>a1111</td>
-                    <td>a2222</td>
-                    <td>aa333</td>
-                    <td>aa444</td>
-                    <td>aa555</td>
-                    <td>aa666</td>
-                    <td>aaaa</td>
-                    <td>aaaa</td>
-                  </tr>
-                  <tr>
-                    <td>bbbb</td>
-                    <td>bbbb1</td>
-                    <td>bbbb2</td>
-                    <td>bbbb3</td>
-                    <td>bbbb4</td>
-                    <td>bbbb5</td>
-                    <td>bbbb6</td>
-                    <td>bbbb7</td>
-                  </tr>
-                </tbody>
-              </table>
+                    <th class="info" v-for="th in ths">{{th}}</th>
+                  </thead>
+                  <tbody id="list1">
+                    <tr v-for="(tr,index1) in trs">
+                      <td v-for="(td,index2) in tr.data">
+                        <img v-bind:src="'../img/'+td" width="50px" height="50px" v-if="index2 == 1" v-on:mouseover="showModel(index1,td)"></img>
+                        <label v-if="index2 != 1">{{td}}</label>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            </div>
+          </div>
+          <!-- tab2-->
+          <div id="menu2" class="tab-pane fade">
+          </div>
+          <!-- /#page-content-wrapper -->
         </div>
-
-        </div>
-        <!-- /#page-content-wrapper -->
-
+      </div>
     </div>
-    <!-- /#wrapper -->
 
+
+
+    <!-- Modal -->
+    <div class="container modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+          <div class="media">
+            <div class="media-left media-top">
+              <img v-bind:src="'../img/'+(selectItem.data)[1]" style="width:200px;height:200px">
+              <!-- <img src="../img/hero1.png" style="width:200px;height:200px"> -->
+            </div>
+            <div class="media-body">
+              <!-- ウルトラマンティガの基本タイプで、スピードとパワーのバランスがいい。通常はこの姿で活動し、数々の特殊能力で邪悪な存在を粉砕していく。 人間ウルトラマンであるティガは、ダイゴそのものである。そのため、ダイゴの戦闘経験がダイレクトにティガの戦闘力に反映される。マルチタイプの戦闘はその名の通り万能で、パワー、スピードのバランスのとれた動きで様々な技を炸裂させている。 -->
+              {{(selectItem.data[5])}}
+            </div>
+            <hr>
+          </div>
+          <div class="media">
+              <div class="media-left media-middle">
+                  <img src="../img/skill1.png" style="width:100px;height:100px;">
+              </div>
+            <div class="media-body">
+              <h4 class="media-heading">ゼペリオン光線</h4>
+              <p> マルチタイプの必殺技だ。L字型に組んだ両腕から全エネルギーを一気に打つ。一撃で敵の体を貫くほどの威力だし、破壊力抜群の光線だ。切り札として使用する。
+              </p>
+              <audio controls>
+                <source src="../audio/skill1.wav"> Your browser does not support the audio element.
+              </audio>
+              <a type="button" class="btn btn-default btn-sm" href="../audio/skill1.wav">
+                <span class="glyphicon glyphicon-download-alt">Download </span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  </div>
+  <!-- /#wrapper -->
 </body>
 
 </html>
