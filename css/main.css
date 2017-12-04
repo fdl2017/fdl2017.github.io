@@ -168,3 +168,10 @@ div.tab-pane {
 .hidden {
   display:none;
 }
+#pageContent {
+    padding-top:50px;
+}
+#propernounDetail {
+    padding-top:50px;
+
+}

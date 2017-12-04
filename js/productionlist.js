@@ -91,11 +91,11 @@ var charactorList = {
 
 
 var contractUserFields = [
-    {"title":"契約者ID","value":"","type":""},
-    {"title":"パスワード","value":"","type":""},
-    {"title":"国","value":"","type":""},
-    {"title":"契約開始日","value":"","type":""},
-    {"title":"契約終了日","value":"","type":""}
+    {"title":"契約者ID","value":"","type":"text"},
+    {"title":"パスワード","value":"","type":"password"},
+    {"title":"国","value":"","type":"text"},
+    {"title":"契約開始日","value":"","type":"text"},
+    {"title":"契約終了日","value":"","type":"text"}
 ];
 var contractUserDataList = {
     fields:[],
@@ -115,7 +115,7 @@ var properNounTable= {
 
 }
 var properNounSrchResultList = {
-    title:["画像","言語","固有名詞","名詞紹介","制作年度","作品略称",""],
+    title:["画像","言語","固有名詞","名詞紹介","制作年度","作品略称"],
     class:["col-sm-1","col-sm-1","col-sm-2","col-sm-4","col-sm-0.7","col-sm-2","col-sm-1"],
     list:[
         {id:"1",productionId:"1",data:["hero1.png",

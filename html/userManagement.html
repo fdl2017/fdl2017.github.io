@@ -123,30 +123,12 @@
 
           <div id="menu3" class="tab-pane fade">
             <form class="form-horizontal" id="forminfo2">
-              <div class="form-group">
-                <label for="name" class="control-label col-sm-2">契約者ID</label>
-                <div class="col-sm-6">
-                  <input type="text" id="name" class="form-control" />
-                </div>
-              </div>
               <div class="form-group" v-for="el in items" >
                   <label for="name" class="control-label col-sm-2">{{el.title}}</label>
                   <div class="col-sm-6">
                           <input type="text" id="name" class="form-control" v-bind:value="el.value" />
                   </div>
             </div>
-              <!-- <div class="form-group">
-                <label for="name" class="control-label col-sm-2">パースワード</label>
-                <div class="col-sm-6">
-                  <input type="password" id="password" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name" class="control-label col-sm-2">契約者名</label>
-                <div class="col-sm-6">
-                  <input type="text" id="name" class="form-control" />
-                </div>
-              </div> -->
               <div class="form-group">
                 <label for="name" class="control-label col-sm-2">言語</label>
                 <div class="col-sm-6">
@@ -189,7 +171,7 @@
 
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-6">
-                  <input type="button" id="name" class="btn btn-primary btn-lg" value="登録" />
+                  <input type="button" id="name" class="btn btn-primary btn-lg" value="  登録  " />
                 </div>
               </div>
             </form>
@@ -199,49 +181,6 @@
         </div>
       </div>
     </div>
-
-
-    <!-- <div class="panel panel-primary table-responsive ">
-          <div class="panel-heading">作品一覧</div>
-            <table class="table table-hover table-bordered">
-              <thead>
-              <th>作品ID</th>
-              <th>作品名正式名称</th>
-              <th>英文名称</th>
-              <th>日本語コピーライト</th>
-              <th>copyright</th>
-              <th>Short copyright</th>
-              <th>製作年</th>
-              <th>カテゴリー 尺/話数</th>
-              <th></th>
-            </thead>
-            <tbody>
-              <tr>
-                <td><a href="productionDetail.html?id=‘aaaa’">aaaa</a></td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                <td>aaaa</td>
-                <td><a href="updateProduction.html?id='aaaa'" class="btn btn-default">編集</a></td>
-              </tr>
-              <tr>
-                <td><a href="productionDetail.html?id='bbbb'">bbbb</a></td>
-                <td>bbbb</td>
-                <td>bbbb</td>
-                <td>bbbb</td>
-                <td>bbbb</td>
-                <td>bbbb</td>
-                <td>bbbb</td>
-                <td>bbbb</td>
-                <td><a href="updateProduction.html?id='aaaa'" class="btn btn-default">編集</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div> -->
   </div>
 </body>
 

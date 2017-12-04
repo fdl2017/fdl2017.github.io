@@ -107,16 +107,8 @@
             <form>
               <div class="panel panel-primary ">
                 <div class="panel-heading">検索条件</div>
+               
                 <div class="panel-body">
-                  <!-- <div class="form-group">
-                    <label for="name">検索キーワード：</label>
-                    <input type="text" id="keyCondition1" class="form-control" placeholder="固有名詞を入力してください" />                    
-                  </div> -->
-                  <!-- <div class="form-group">
-                    <button type="button" class="btn btn-info">
-                      <span class="glyphicon glyphicon-search"></span>   検索  
-                    </button>
-                  </div> -->
                   <div class="input-group">
                     <input type="text" id="keyCondition1" class="form-control" placeholder="固有名詞を入力してください" />
                     <div class="input-group-btn">
@@ -126,15 +118,18 @@
                     </div>
                   </div>
                 </div>
+
               </div>
             </form>
             <!-- list-->
             <div class="panel panel-primary table-responsive ">
-              <div class="panel-heading">作品一覧</div>
+              <div class="panel-heading">名詞一覧</div>
               <table class="table table-hover table-bordered">
                 <thead>
                   <tr>
                     <th v-for="(th,i) in ths" v-bind:class="stylecls[i]">{{th}}</th>
+                    <th><button type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-print"></span> Print</button></th>
                   </tr>
                 </thead>
                 <tbody id="list1">
@@ -165,7 +160,7 @@
         <div class="modal-dialog">
 
           <!-- Modal content-->
-          <div class="modal-content">
+          <div class="modal-content alert alert-info">
 
             <div class="media">
               <div class="media-left media-top">

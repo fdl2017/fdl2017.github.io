@@ -54,6 +54,15 @@ $(function () {
     //data: productionListData
   });
 
+  Vue.component("formfield",{
+    props:["lbltxt","fieldname","fieldtype","fieldvalue"],
+    template: '<div class="form-group">\
+    <label for="name" class="control-label col-sm-2">{{lbltxt}}</label>\
+    <div class="col-sm-6">\
+      <input type="text" v-bind:id="fieldname" v-bind:name="fieldname" class="form-control" value={{fieldvalue}} />\
+    </div>\
+  </div>'
+  })
   //====================
   // Menu click event
   //====================

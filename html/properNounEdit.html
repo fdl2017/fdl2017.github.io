@@ -49,6 +49,11 @@
                             // any: arbitrarily jquery selector
           imgbreak : true    // append <br> after thumbnail images
       });
+      $('#upload2').uploadThumbs({
+          position : "#picPreview2",      // 0:before, 1:after, 2:parent.prepend, 3:parent.append,
+                            // any: arbitrarily jquery selector
+          imgbreak : true    // append <br> after thumbnail images
+      });
 
     });
 
@@ -65,21 +70,19 @@
     <!-- /#sidebar-wrapper -->
     <!-- Page Content -->
     <div id="page-content-wrapper">
-      <div class="container" id="productionDetail1">
+      <div class="container panel panel-default" id="productionDetail1">
 
         <!-- <div class="row"> -->
           <!-- Left-aligned -->
           <div class="media">
             <div class="media-left media-middle">
-              <div id="picPreview"><img src="../img/hero1.png"></div>
-              <ul>
-                  <li>
-                      <label>
-                          <input type="file" id="upload1" name="images[]" multiple="multiple" />
-                      </label>
-                  </li>
-              </ul>
-            </div>
+              <div id="picPreview">
+                <img src="../img/hero1.png">
+              </div>
+              <label>
+                <input type="file" id="upload1" name="images[]" multiple="multiple" />
+              </label>
+              </div>
             <div class="media-body">
               <h4>基本情報</h4>
               <span>身高:<input type="text" value="53m"/></span>
@@ -93,14 +96,20 @@
           </div>
         <!-- </div> -->
         <div class="media">
-            <div class="media-left media-middle">
+            <div class="media-left media-middle" id="picPreview2">
                 <img src="../img/skill1.png" style="width:100px;height:100px;">
+                <label>
+                    <input type="file" id="upload2" name="images[]" multiple="multiple" />
+                  </label>
             </div>
             <div class="media-body">
 
                 <h4 class="media-heading　btn ">技能<span class="badge">１</span></h4><h4>ゼペリオン光線</h4>
                 <textarea>  マルチタイプの必殺技だ。L字型に組んだ両腕から全エネルギーを一気に打つ。一撃で敵の体を貫くほどの威力だし、破壊力抜群の光線だ。切り札として使用する。
                 </textarea>
+                  <label>
+                    <input type="file" id="upload2" name="images[]" multiple="multiple" />
+                  </label>
                 <audio controls>
                     <source src="../audio/skill1.wav">
                   Your browser does not support the audio element.
