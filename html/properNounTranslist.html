@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>固有名詞翻訳有無一覧</title>
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <!-- <link href="../css/simple-sidebar.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+  </style>
+
+
+
+  <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../js/productionlist.js"></script>
+  <script type="text/javascript" src="../js/popper.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
+  <script type="text/javascript" src="../js/vue.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      
+      var configData = {
+        titles:["年度","作品略称","固有名詞","言語"],
+        stylecls:["","","",""],
+        datas:[
+        ["1996","ウルトラマンティガ","光を継ぐもの","日本語"],
+        ["1996","ウルトラマンティガ","发光的迪迦","中国語"],
+        ["1996","ウルトラマンティガ","","英語"],
+        ["1996","ウルトラマンティガ","石の神話","日本語"],        
+        ["1996","ウルトラマンティガ","石头的神话","中国語"],
+        ["1996","ウルトラマンティガ","","英語"],
+        ["1996","ウルトラマンティガ","悪魔の預言","日本語"],
+        ["1996","ウルトラマンティガ","恶魔的预言","中国語"],
+        ["1996","ウルトラマンティガ","","英語"],
+        ]      
+      };
+      
+      var tablelistVue = new Vue({
+        el: '#properNounTranslist',
+        data: {
+          stylecls: configData["stylecls"],
+          ths: configData["titles"],
+          trs: configData["datas"]     
+        },
+        methods: {
+        }
+      });
+
+    });
+  </script>
+</head>
+
+<body>
+
+  <div id="wrapper" class="active">
+    <!-- Sidebar -->
+    <div id="menuDiv">
+      <menu-component></menu-component>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content" class="top50">
+
+      <div class="container" id="properNounTranslist" >
+        <!-- list-->
+        <table class="table table-hover table-bordered"  >
+          <thead>
+            <tr> <!--v-bind:class="stylecls[i]" -->
+              <th v-for="(th,i) in ths" class="info">{{th}}</th>
+            </tr>
+          </thead>
+          <tbody id="list1">
+            <tr v-for="(tr,index1) in trs">
+              <td v-for="(td,index2) in tr">{{td}}</td>           
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -33,6 +33,7 @@
     font-size:10px;
 }
 #page-content-wrapper {
+
     padding-left: 0;
     margin-left: 0;
     width: 100%;
@@ -175,3 +176,7 @@ div.tab-pane {
     padding-top:50px;
 
 }
+.top50 {
+    padding-top:50px;
+}
+
