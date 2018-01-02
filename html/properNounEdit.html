@@ -53,9 +53,20 @@
           position : "#picPreview2",      // 0:before, 1:after, 2:parent.prepend, 3:parent.append,
                             // any: arbitrarily jquery selector
           imgbreak : true    // append <br> after thumbnail images
-      });
+      });    
 
     });
+
+    function funcBackTOList() {
+        var fromPage = window.location.href.replace(/.*from=/,"")
+        if (fromPage == "list") {
+          window.location = "properNounList.html";
+          return;
+        }
+        if (fromPage == "search") {
+          window.location.href="properNoun.html";
+        }
+      }
 
   </script>
 </head>
@@ -124,8 +135,8 @@
      <hr>
      <div class="container">
         <div class="form-group">        
-          <button class="btn btn-primary btn-sm" onclick="window.location='properNoun.html'">    戻る   </button>
-          <button class="btn btn-primary btn-sm" onclick="window.location='properNoun.html'">    保存   </button>
+          <button class="btn btn-primary btn-sm" onclick="funcBackTOList();">    戻る   </button>
+          <button class="btn btn-primary btn-sm" onclick="funcBackTOList();">    保存   </button>
         </div>
     </div>
 

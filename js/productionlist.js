@@ -12,7 +12,6 @@ var productionlist = {
         {id:"9",	data:["劇場版 ウルトラマンギンガS 決戦！ウルトラ１０勇士！！","Ultraman Ginga S the movie","©2015「劇場版 ウルトラマンギンガＳ」製作委員会","©2015 ULTRAMAN GINGA S FILM PARTNERS","","2015","Film","63min"]},
         {id:"10",	data:["ウルトラマンX","Ultraman　X","©2015 ウルトラマンエックス製作委員会","©2015 TSUBURAYA PRODUCTIONS","","2015","TV series","[30min/24EP]"]}
     ]
-
 };
 
 var charactorFields = [

@@ -113,16 +113,7 @@
           <div id="menu2" class="tab-pane fade in active">
             <!--search -->
             <form class="form-inline">
-              <div class="panel panel-primary ">
-                <div class="panel-heading">検索条件</div>
-                <div class="panel-body">
-                  <div class="form-group">
-                    <label for="name">キーワード：</label>
-                    <input type="text" id="keyCondition1" class="form-control" placeholder="作品名を入力してください" />
-                    <!-- <button class="btn btn-primary btn-lg"></button> -->
-                  </div>
-                </div>
-              </div>
+           
             </form>
             <!-- list-->
             <div class="panel panel-primary table-responsive ">
@@ -140,6 +131,7 @@
                     <td>
                       <a v-bind:href="'updateProduction.html?'+tr.id" class="btn btn-default">編集</a>
                       <a v-bind:href="'productionDetail.html?'+tr.id" class="btn btn-default">詳細</a>
+                      <a v-bind:href="'properNounList.html?'+tr.id" class="btn btn-default">固有名詞</a>
                     </td>
                   </tr>
                 </tbody>

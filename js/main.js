@@ -19,11 +19,11 @@ $(function () {
   //==============================================================
   var menuData = {
     items: [
-      { id: "menu_index", href: "index.html", text: "掲示板" },
+      // { id: "menu_index", href: "index.html", text: "掲示板" },
       { id: "menu_propernoun", href: "properNoun.html", text: "固有名詞検索" },
       { id: "menu_transtbl", href: "properNounTranslist.html", text: "翻訳有無一覧" },
       { id: "menu_production", href: "productManagement.html", text: "作品管理" },
-      { id: "menu_user", href: "userManagement.html", text: "ユーザ管理" }     
+      { id: "menu_user", href: "userManagement.html", text: "ユーザ管理" }
     ]
   };
 
@@ -55,8 +55,8 @@ $(function () {
     //data: productionListData
   });
 
-  Vue.component("formfield",{
-    props:["lbltxt","fieldname","fieldtype","fieldvalue"],
+  Vue.component("formfield", {
+    props: ["lbltxt", "fieldname", "fieldtype", "fieldvalue"],
     template: '<div class="form-group">\
     <label for="name" class="control-label col-sm-2">{{lbltxt}}</label>\
     <div class="col-sm-6">\
@@ -74,16 +74,16 @@ $(function () {
   $("#menu-toggle").click(function (e) {
     e.preventDefault();
     $("#wrapper").toggleClass("active");
-    if ( $("#wrapper").hasClass("active") ) {
-      G_OBJ.setItem("class","active");
+    if ($("#wrapper").hasClass("active")) {
+      G_OBJ.setItem("class", "active");
     } else {
-      G_OBJ.setItem("class","");
+      G_OBJ.setItem("class", "");
     }
   });
 
   $('[data-toggle="tooltip"]').tooltip();
 
-  
+
 })
 
 
@@ -91,7 +91,7 @@ $(function () {
 // Public function : Get production infomation
 //==============================================================
 var G_FUNC = {
-  getProductionData: function (list,id) {
+  getProductionData: function (list, id) {
     for (var i = 0; i < list.length; i++) {
       if (list[i]["id"] == id) {
         return list[i];
@@ -102,8 +102,8 @@ var G_FUNC = {
   makeUpdateProductionData: function (type) {
     var param = window.location.href.replace(/.*\?/, "");
     //console.debug(param);
-    var list = !type || type ==0 ? productionlist : properNounSrchResultList;
-    if (! ( param && /^\d+$/.test(param))) {
+    var list = !type || type == 0 ? productionlist : properNounSrchResultList;
+    if (!(param && /^\d+$/.test(param))) {
       param = "1";
     }
     var dataList = [];
