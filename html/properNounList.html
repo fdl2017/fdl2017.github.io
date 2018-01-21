@@ -65,7 +65,7 @@
             var id = (id + "").replace(/\D/g, "");
             this.selectItem = properNounSrchResultList["list"][index];
             test = "ooooooooooooooo";
-            $('#myModal').modal('show');
+            //$('#myModal').modal('show');
           }
         }
       });
@@ -111,7 +111,10 @@
                   <tr>
                     <th v-for="(th,i) in ths" v-bind:class="stylecls[i]">{{th}}</th>
                     <!-- <th><button type="button" class="btn btn-primary">追加</button></th> -->
-                    <th><a v-bind:href="'properNounEdit.html?from=list'" class="btn btn-default">追加</a></th>
+                    <th><a v-bind:href="'properNounEdit.html?from=list&isNew'" class="btn btn-default">追加</a>
+                      <button type="button" class="btn btn-default btn-lg" >
+                        <span class="glyphicon glyphicon-print"></span> Print</button>
+                    </th>
                   </tr>
                 </thead>
                 <tbody id="list1">
@@ -172,7 +175,11 @@
     </div>
     <!-- /#page-content-wrapper -->
 
-
+    <div class="container">
+        <div class="form-group">
+          <button class="btn btn-primary btn-sm" onclick="window.location='productManagement.html'"> 戻る </button>
+        </div>
+      </div>
   </div>
   <!-- /#wrapper -->
   </form>

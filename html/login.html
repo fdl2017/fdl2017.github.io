@@ -1,79 +1,114 @@
-
 <!doctype html>
 <html>
+
 <head>
 	<title></title>
 	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../css/bootstrap.css" >
-	<link rel="stylesheet" href="../css/login.css" >
-	<link rel="stylesheet" href="../css/main.css" >
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/login.css">
+	<link rel="stylesheet" href="../css/main.css">
 
 	<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
-	<script type="text/javascript" src="../js/popper.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.js"></script>
-	<script type="text/javascript" src="../js/main.js"></script>
-
+	<script type="text/javascript" src="../js/md5.min.js"></script>
+	<!-- <script type="text/javascript" src="../js/main.js"></script> -->
+	<script type="text/javascript" src="../js/vue.js"></script>
 
 	<style>
 		.selector-for-some-widget {
- 			 box-sizing: content-box;
+			box-sizing: content-box;
 		}
 	</style>
 	<script type="text/javascript">
-			var userObj = {"admin":"admin","user1":"user1","user2":"user2"};
-			$(function(){
-				$("#btnlogin").on("click",function(){
-					$("#msg").addClass("hidden");
-					if (!userObj[$("#id").val()+""] || $("#password").val() != userObj[$("#id").val()+""]) {
-						$("#msg").removeClass("hidden");
+		var userObj = {
+			"admin": "21232f297a57a5a743894a0e4a801fc3",
+			"user1": "24c9e15e52afc47c225b757e7bee1f9d",
+			"user2": "7e58d63b60197ceb55a1c487989a3720"
+		};
+		$(function () {
+			$("#btnlogin").on("click", function () {
+
+			});
+
+			var vue = new Vue({
+				el: "#container",
+				data: { 	
+					sysLanguage: "0",
+					placeHolder: [{
+						id: "ユーザIDを入力してください",
+						pass: "パースワードを入力してください"
+					}, {
+						id: "Please input your user id",
+						pass: "Please input your password"
+					}],
+					loginBtn: ["ログイン", "login"],
+					error: ["ユーザIDまたはパースワードが間違えた", "The user id or password is wrong"]
+				},
+				methods: {
+					login: function () {
+						$("#msg").addClass("hidden");
+						if (!userObj[$("#id").val() + ""] || md5($("#password").val()) != userObj[$("#id").val() + ""]) {
+							$("#msg").removeClass("hidden");
+							return false;
+						}
+						G_OBJ = window.sessionStorage;
+						G_OBJ.setItem("userId", $("#id").val());
+						//G_OBJ["sessionObje"] = {"userId":$("#id").val(),"password":$("#password").val()};
+						window.location = "properNoun.html";
 						return false;
 					}
-					G_OBJ = window.sessionStorage;
-					G_OBJ.setItem("userId",$("#id").val());
-					//G_OBJ["sessionObje"] = {"userId":$("#id").val(),"password":$("#password").val()};
-					window.location = "properNoun.html";
-					return false;
-				});
-			})
+				}
+			});
+		})
 	</script>
 
 
 </head>
+
 <body>
-<!--
+	<!--
     you can substitue the span of reauth email for a input with the email and
     include the remember me checkbox
     -->
-    <div class="container">
-        <div class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-           <!--  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" /> -->
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin" >
-                <!-- <span id="reauth-email" class="reauth-email"></span> -->
-                <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
-								<div id="msg" class="alert alert-danger hidden">
-  								ユーザIDまたはパースワードが間違えた
-								</div>
+	<div class="container">
+		<div class="card card-container" id="container">
+			<!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+			<!--  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" /> -->
+			<p id="profile-name" class="profile-name-card"></p>
+			<form class="form-signin">
+				<!-- <span id="reauth-email" class="reauth-email"></span> -->
+				<!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
+				<div id="msg" class="alert alert-danger hidden">
+					{{error[sysLanguage]}}
+				</div>
 
-								<input type="text" id="id" class="form-control" placeholder="ユーザIDを入力してください" required autofocus />
-                <input type="password" id="password" class="form-control" placeholder="パースワードを入力してください" required>
-                <!-- <div id="remember" class="checkbox">
+				<input type="text" id="id" class="form-control" :placeholder="placeHolder[sysLanguage]['id']" required autofocus />
+				<input type="password" id="password" class="form-control" :placeholder="placeHolder[sysLanguage]['pass']" required>
+				<!-- <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div> -->
-                <button class="btn btn-lg btn-primary btn-block btn-signin"  id="btnlogin" >ログイン</button>
-            </form><!-- /form -->
-            <!-- <a href="#" class="forgot-password">
+				<input type="button" class="btn btn-lg btn-primary btn-block btn-signin" id="btnlogin" :value="loginBtn[sysLanguage]" @click="login"
+				/>
+				<label>
+					<input type="radio" value="0" name="sysLanguage" v-model="sysLanguage" />日本語</label>
+				<label>
+					<input type="radio" value="1" name="sysLanguage" v-model="sysLanguage" />English</label>
+			</form>
+			<!-- /form -->
+			<!-- <a href="#" class="forgot-password">
                 Forgot the password?
             </a> -->
-        </div><!-- /card-container -->
-    </div><!-- /container -->
+		</div>
+		<!-- /card-container -->
+	</div>
+	<!-- /container -->
 
 </body>
+
 </html>

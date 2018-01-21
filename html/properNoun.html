@@ -71,6 +71,13 @@
       });
 
     });
+
+    function openPrintWin() {
+      // win = window.open();
+      // win.document.body.innerHTML = $("#propernounlist").html();
+      $("#myModal").html($("#propernounlist").html());
+      $('#myModal').modal('show');
+    }
   </script>
 </head>
 
@@ -132,11 +139,11 @@
           </div>
             <div class="panel panel-primary table-responsive ">
               <div class="panel-heading">名詞一覧</div>
-              <table class="table table-hover table-bordered">
+              <table class="table table-hover table-bordered" id="propernounlist">
                 <thead>
                   <tr>
                     <th v-for="(th,i) in ths" v-bind:class="stylecls[i]">{{th}}</th>
-                    <th><button type="button" class="btn btn-default btn-lg">
+                    <th><button type="button" class="btn btn-default btn-lg" >
                         <span class="glyphicon glyphicon-print"></span> Print</button></th>
                   </tr>
                 </thead>

@@ -110,22 +110,6 @@
         window.location.href = "properNoun.html";
       }
     }
-
-   var temp_G_skill_cnt = 1;
-   function addSkill() {
-     var div = $("#skillDivTemplate").clone(true);
-     
-     div.show();
-     div.appendTo($("#skillContainer"));
-     temp_G_skill_cnt++;
-     div.find("#skill_num").html(temp_G_skill_cnt);
-     
-   }
-   function delSkill(obj) {
-     $(obj).parents(".media").remove();
-     temp_G_skill_cnt--;
-   }
-
   </script>
 </head>
 
@@ -143,7 +127,6 @@
 
         <!-- <div class="row"> -->
         <!-- Left-aligned -->
-        <div class="alert alert-info "><h4>固有名詞詳細</h4></div>
         <form >          
           <div class="form-group">
             <label for="category">カテゴリ</label>
@@ -165,20 +148,18 @@
 
         <!-- <div class="alert alert-info">光を継ぐもの</div> -->
         <div id="charactorDiv" class="top50" v-show="showDetail">
-          <div class="alert alert-info "><h4>基本情報</h4></div>
-          <div class="media">
-            <div class="media-left media-middle">
+          <div >
+            <div>
               <div id="picPreview">
                 <img v-show="isNotNew" src="../img/hero1.png">
               </div>
-              <label>
-                <span>
-                 名詞画像
+                <h4>名詞画像</h4>                 
                 <input type="file" id="upload1" name="images[]" multiple="multiple" />
-                </span>
-              </label>
             </div>
-            <div class="media-body">              
+            <hr>
+
+            <div >
+              <h4>基本情報</h4>
               <formfield></formfield>
               <hr>
 
@@ -189,33 +170,27 @@
                 <hr>
                 <h4>紹介</h4>
                 <textarea>ウルトラマンティガの基本タイプで、スピードとパワーのバランスがいい。通常はこの姿で活動し、数々の特殊能力で邪悪な存在を粉砕していく。 人間ウルトラマンであるティガは、ダイゴそのものである。そのため、ダイゴの戦闘経験がダイレクトにティガの戦闘力に反映される。マルチタイプの戦闘はその名の通り万能で、パワー、スピードのバランスのとれた動きで様々な技を炸裂させている。
-                </textarea>
-                <hr>
-            </div> 
+                </textarea>                
+            </div>
+            <hr>
           </div> 
      
-        <div id="skillContainer">
-              <div class="alert alert-info "><h4>技能</h4></div>
-              <input type="button" value="技能追加" onclick="addSkill()"/>
-          <div class="media" id="skillDiv">
-              <div class="media-left media-middle" >
-                <img v-show="isNotNew" src="../img/skill1.png" style="width:100px;height:100px;">
-                <div id="picPreview2" style="width:50px;height:50px;"></div>
-                <label>
-                    <span>技能画像<input type="file" id="upload2" name="images[]" multiple="multiple" /></span>
-                </label>
-              </div>
-            <div class="media-body">
+          <div  id="skillDiv">
               <h4 class="media-heading　btn ">技能
-                <span class="badge">１</span>
+                <!-- <span class="badge">１</span> -->
               </h4>
+              <div>
+                  <img v-show="isNotNew" src="../img/skill1.png" style="width:100px;height:100px;">
+                  <div id="picPreview2" style="width:50px;height:50px;"></div>
+                  <label>
+                      <span>技能画像<input type="file" id="upload2" name="images[]" multiple="multiple" /></span>
+                  </label>
+                </div>
               <h4>技能名:<input type="text" value="ゼペリオン光線" /></h4>
               <textarea> マルチタイプの必殺技だ。L字型に組んだ両腕から全エネルギーを一気に打つ。一撃で敵の体を貫くほどの威力だし、破壊力抜群の光線だ。切り札として使用する。
-              </textarea> 
-              <input type="button" value="技能削除" onclick="delSkill(this)" />             
+              </textarea>
             </div>
           </div>
-        </div>
 
         </div>
 
@@ -230,25 +205,7 @@
       </div>
 
     </div>
-    
 
-    <div class="media" id="skillDivTemplate" style="display:none">
-        <div class="media-left media-middle" >         
-          <div id="picPreview2" style="width:50px;height:50px;"></div>
-          <label>
-              <span>技能画像<input type="file" id="upload2" name="images[]" multiple="multiple" /></span>
-          </label>
-        </div>
-      <div class="media-body">
-        <h4 class="media-heading　btn ">技能
-          <span class="badge" id="skill_num">１</span>
-        </h4>
-        <h4>技能名:<input type="text" value="" /></h4>
-        <textarea> 
-        </textarea> 
-        <input type="button" value="技能削除" onclick="delSkill(this)" />             
-      </div>
-    </div>
 
   </div>
   <!-- /#page-content-wrapper -->

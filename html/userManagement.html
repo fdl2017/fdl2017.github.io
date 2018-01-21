@@ -26,16 +26,92 @@
     var g_USER_LIST = {
       
     }
+
+    function showContract(v) {
+        if (v == "1") {
+          $("#contractInfo").show();
+        } else{
+          $("#contractInfo").hide();
+        }
+      }
+
     $(function () {
       $(".nav-tabs a").click(function () {
         $(this).tab('show');
       });
+    
 
+      Vue.component("form-field1", {
+        template: '<form class="form-horizontal">\
+          <div class="form-group" v-for="el in items2">\
+              <label for="name" class="control-label col-sm-2">{{el.title}}</label>\
+              <div class="col-sm-6">\
+                <template v-if="el.type==\'checkbox\'">\
+                    <label class="checkbox-inline" v-for="(ck,idx) in el.value"><input type="checkbox" :name="\'chk\'+idx" v-model="user_lans">{{ck}}</label>\
+                </template>\
+                <template v-else-if="el.type==\'radio\'">\
+                    <label class="radio-inline" v-for="(r,idx) in el.value"><input type="radio" :value="idx" name="rd" v-model="user_type_sel"  onclick="showContract(this.value)">{{r}}</label>\
+                </template>\
+                <template v-else>\
+                    <input type="text" :id="el.name" :name="el.name" class="form-control" :value="el.value" />\
+                </template>\
+                </div>\
+            </div></form>',
+          methods:{
+            selUserType:function(v) {
+              //alert(v);
+              this.$emit('update:user_type_sel', this.user_type_sel);
+              //alert(this.user_type_sel);
+            }
+          },
+          data:function(){
+            return {items2:[
+                      {"title":"ユーザID","name":"user_id","value":"","type":"text"},
+                      {"title":"ユーザ名","name":"user_name","value":"","type":"text"},
+                      {"title":"パスワード","name":"password","value":"","type":"text"},
+                      {"title":"ユーザ種別","name":"user_type","value":["社員","契約者"],"type":"radio"},
+                    ],
+                    user_type_sel:"0"};
+          }
+      });
+
+      Vue.component("form-field2", {
+        template: '<form class="form-horizontal">\
+          <div class="form-group" v-for="el in items3">\
+              <label for="name" class="control-label col-sm-2">{{el.title}}</label>\
+              <div class="col-sm-6">\
+                <template v-if="el.type==\'checkbox\'">\
+                    <label class="checkbox-inline" v-for="(ck,idx) in el.value"><input type="checkbox" :name="\'chk\'+idx" >{{ck}}</label>\
+                </template>\
+                <template v-else-if="el.type==\'radio\'">\
+                    <label class="radio-inline" v-for="(r,idx) in el.value"><input type="radio"  name="rd"  >{{r}}</label>\
+                </template>\
+                <template v-else>\
+                    <input type="text" :id="el.name" :name="el.name" class="form-control" :value="el.value" />\
+                </template>\
+                </div>\
+            </div></form>',
+        methods:{
+          selUserType:function() {
+            this.$emit('update:user_lans', user_lans);
+          }
+        },
+          data:function(){
+            return {
+                  items3:[ {"title":"契約開始日","name":"contract_start_ymd","value":"","type":"text"},
+                      {"title":"契約終了日","name":"contract_end_ymd","value":"","type":"text"},
+                      {"title":"言語","name":"","value":["日本語","日本語通訳","中国語","中国語通訳","英語","英語通訳"],"type":"checkbox"},],
+                  user_lans:[],
+                    };
+          }
+      });
 
       var menuv = new Vue({
-                el: '#forminfo2',
+                el: '#newUserDiv',
                 data:{
-                    items:contractUserFields
+                    items:contractUserFields,
+                    user_type_sel:"0",
+                    user_lans:[],
                 }
             });
     });
@@ -57,12 +133,12 @@
           <li>
             <a href="#menu2">新規ユーザ</a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#menu3">新規契約者ユーザ</a>
-          </li>
+          </li> -->
         </ul>
 
-        <div class="tab-content">
+        <div class="tab-content" id="newUserDiv">
           <div id="menu1" class="tab-pane fade in active">
             <table class="table table-striped">
               <thead>
@@ -97,8 +173,32 @@
 
           <div id="menu2" class="tab-pane fade">
             <form class="form-horizontal">
-              <div class="form-group">
-                <label for="name" class="control-label col-sm-2">ユーザID</label>
+              <!-- <div class="form-group"> -->
+                <form-field1 :user_type_sel.sync="user_type_sel"></form-field1>
+                <div style="display:none" id="contractInfo"> 
+                  <form-field2></form-field2>
+                  <div class="container table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <th class="info">作品ID</th>
+                          <th class="info">作品名</th>
+                          <th class="info">製作年</th>
+                          <th class="info"></th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <input type="button" class="btn btn-info btn-sm" value="追加" />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+                <!-- <label for="name" class="control-label col-sm-2">ユーザID</label>
                 <div class="col-sm-6">
                   <input type="text" id="name" class="form-control" />
                 </div>
@@ -114,7 +214,7 @@
                 <div class="col-sm-6">
                   <input type="text" id="name" class="form-control" />
                 </div>
-              </div>
+              </div> -->
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-6">
                   <input type="button" id="name" class="btn btn-primary btn-lg" value="登録" />
@@ -123,67 +223,7 @@
             </form>
           </div>
 
-
-          <div id="menu3" class="tab-pane fade">
-            <form class="form-horizontal" id="forminfo2">
-              <div class="form-group" v-for="el in items" >
-                  <label for="name" class="control-label col-sm-2">{{el.title}}</label>
-                  <div class="col-sm-6">
-                          <input type="text" id="name" class="form-control" v-bind:value="el.value" />
-                  </div>
-            </div>
-              <div class="form-group">
-                <label for="name" class="control-label col-sm-2">言語</label>
-                <div class="col-sm-6">
-                  <!-- <select class="form-control">
-                    <option>日本語</option>
-                    <option>中国語</option>
-                    <option>英語</option>
-                  </select> -->
-                  <label class="checkbox-inline"><input type="checkbox" value="">日本語</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="">中国語</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="">中国語通訳</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="">英語</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="">英語通訳</label>
-                </div>
-              </div>
-
-
-              <!-- <div class="row">
-                              <div class="col-xs-3">作品ID</div>
-                              <div class="col-xs-3">作品名</div>
-                            </div> -->
-              <div class="container table-responsive">
-                <table class="table table-bordered">
-                  <thead>
-                    <th class="info">作品ID</th>
-                    <th class="info">作品名</th>
-                    <th class="info">製作年</th>
-                    <th class="info"></th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <input type="button" class="btn btn-info btn-sm" value="追加" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-6">
-                  <input type="button" id="name" class="btn btn-primary btn-lg" value="  登録  " />
-                </div>
-              </div>
-            </form>
-          </div>
-
-
-        </div>
+       </div>
       </div>
     </div>
   </div>

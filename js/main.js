@@ -26,6 +26,9 @@ $(function () {
       { id: "menu_user", href: "userManagement.html", text: "ユーザ管理" }
     ]
   };
+  if (G_OBJ.getItem("userId") == "user2") {
+    menuData["items"].splice(3,1);
+  }
 
   Vue.component('menu-component', {
     template: '<div id="sidebar-wrapper">\
@@ -55,15 +58,6 @@ $(function () {
     //data: productionListData
   });
 
-  Vue.component("formfield", {
-    props: ["lbltxt", "fieldname", "fieldtype", "fieldvalue"],
-    template: '<div class="form-group">\
-    <label for="name" class="control-label col-sm-2">{{lbltxt}}</label>\
-    <div class="col-sm-6">\
-      <input type="text" v-bind:id="fieldname" v-bind:name="fieldname" class="form-control" value={{fieldvalue}} />\
-    </div>\
-  </div>'
-  })
   //====================
   // Menu click event
   //====================
