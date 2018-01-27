@@ -19,9 +19,9 @@ $(function () {
   //==============================================================
   var menuData = {
     items: [
-      // { id: "menu_index", href: "index.html", text: "掲示板" },
+      { id: "menu_index", href: "index.html", text: "変更履歴一覧" },
       { id: "menu_propernoun", href: "properNoun.html", text: "固有名詞検索" },
-      { id: "menu_transtbl", href: "properNounTranslist.html", text: "翻訳有無一覧" },
+      { id: "menu_transtbl", href: "properNounTranslist.html", text: "固有名詞対照表" },
       { id: "menu_production", href: "productManagement.html", text: "作品管理" },
       { id: "menu_user", href: "userManagement.html", text: "ユーザ管理" }
     ]

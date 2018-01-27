@@ -112,6 +112,7 @@
             </form>
             <!-- list-->
             <div class="panel panel-primary table-responsive ">
+              <div class="table-responsive">
               <div class="panel-heading">作品一覧</div>
               <table class="table table-hover table-bordered" id="production-list">
                 <thead>
@@ -125,12 +126,13 @@
                     <td v-for="td in tr.data">{{td}}</td>
                     <td>
                       <a v-bind:href="'updateProduction.html?'+tr.id" class="btn btn-default">編集</a>
-                      <a v-bind:href="'updateProduction.html?detail=1&'+tr.id" class="btn btn-default">詳細</a>
+                      <!-- <a v-bind:href="'updateProduction.html?detail=1&'+tr.id" class="btn btn-default">詳細</a> -->
                       <a v-bind:href="'properNounList.html?'+tr.id" class="btn btn-default">固有名詞</a>
                     </td>
                   </tr>
                 </tbody>
               </table>
+            </div>
             </div>
           </div>
 

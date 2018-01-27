@@ -34,6 +34,9 @@
           $("#contractInfo").hide();
         }
       }
+    function changeUser() {
+       $("#userTab").click();
+    }
 
     $(function () {
       $(".nav-tabs a").click(function () {
@@ -71,7 +74,7 @@
                       {"title":"パスワード","name":"password","value":"","type":"text"},
                       {"title":"ユーザ種別","name":"user_type","value":["社員","契約者"],"type":"radio"},
                     ],
-                    user_type_sel:"0"};
+                    user_type_sel:"1"};
           }
       });
 
@@ -110,7 +113,7 @@
                 el: '#newUserDiv',
                 data:{
                     items:contractUserFields,
-                    user_type_sel:"0",
+                    user_type_sel:"1",
                     user_lans:[],
                 }
             });
@@ -131,7 +134,7 @@
             <a href="#menu1">ユーザ一覧</a>
           </li>
           <li>
-            <a href="#menu2">新規ユーザ</a>
+            <a id="userTab" href="#menu2">新規ユーザ</a>
           </li>
           <!-- <li>
             <a href="#menu3">新規契約者ユーザ</a>
@@ -152,19 +155,19 @@
                       <td>admin</td>
                       <td>admin</td>
                       <td>管理者</td>
-                      <td><input type="button" value="変更" class="btn disabled" /><input type="button" value="削除" class="btn disabled" /></td>
+                      <td><input type="button" value="変更" onclick="changeUser()" class="btn disabled" /><input type="button" value="削除" class="btn disabled" /></td>
                     </tr>
                 <tr>
                   <td>user1</td>
                   <td>user1</td>
                   <td>社員ユーザ</td>
-                  <td><input type="button" value="変更" class="btn btn-default" /><input type="button" value="削除" class="btn btn-default"/></td>
+                  <td><input type="button" value="変更" onclick="changeUser()" class="btn btn-default" /><input type="button" value="削除" class="btn btn-default"/></td>
                 </tr>
                 <tr>
                     <td>user2</td>
                     <td>user2</td>
                     <td>契約者</td>
-                    <td><input type="button" value="変更" class="btn btn-default" /><input type="button" value="削除" class="btn btn-default" /></td>
+                    <td><input type="button" value="変更" onclick="changeUser()" class="btn btn-default" /><input type="button" value="削除" class="btn btn-default" /></td>
                   </tr>
               </tbody>
 
@@ -175,7 +178,7 @@
             <form class="form-horizontal">
               <!-- <div class="form-group"> -->
                 <form-field1 :user_type_sel.sync="user_type_sel"></form-field1>
-                <div style="display:none" id="contractInfo"> 
+                <div  id="contractInfo"> 
                   <form-field2></form-field2>
                   <div class="container table-responsive">
                       <table class="table table-bordered">

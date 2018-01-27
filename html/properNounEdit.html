@@ -30,26 +30,55 @@
     $(function () {
 
 
-      var formDate = {"items":[
-        {"title":"身長","name":"t","value":""},
-        {"title":"体重","name":"t","value":""},
-        {"title":"飛行速度","name":"t","value":""},
-        {"title":"ジャンプ力","name":"t","value":""},
-        {"title":"陸上走行速度","name":"t","value":""},
-        {"title":"地中潜行速度","name":"t","value":""},
-        {"title":"出現地","name":"t","value":""},
-      ]};
+      var formDate = {
+        "items": [{
+            "title": "身長",
+            "name": "t",
+            "value": ""
+          },
+          {
+            "title": "体重",
+            "name": "t",
+            "value": ""
+          },
+          {
+            "title": "飛行速度",
+            "name": "t",
+            "value": ""
+          },
+          {
+            "title": "ジャンプ力",
+            "name": "t",
+            "value": ""
+          },
+          {
+            "title": "陸上走行速度",
+            "name": "t",
+            "value": ""
+          },
+          {
+            "title": "地中潜行速度",
+            "name": "t",
+            "value": ""
+          },
+          {
+            "title": "出現地",
+            "name": "t",
+            "value": ""
+          },
+        ]
+      };
       Vue.component("formfield", {
         template: '<form class="form-horizontal">\
           <div class="form-group">\
-            <div class="col-sm-6" v-for="el in items" >\
-              <label for="name" class="control-label col-sm-6">{{el.title}}</label>\
-              <div class="col-sm-6">\
+              <div class="col-sm-6" v-for="el in items">\
+              <label for="name" class="control-label col-sm-3">{{el.title}}</label>\
+              <div class="col-sm-4">\
                 <input type="text" :id="el.name" :name="el.name" class="form-control" :value="el.value"" />\
               </div>\
-            </div>\
+             </div>\
           </div></form>',
-        data:function() {
+        data: function () {
           return formDate;
         }
       });
@@ -62,21 +91,21 @@
           //trs: charactorList && charactorList["list"] ? charactorList["list"] : [[]],
           selectItem: G_FUNC.makeUpdateProductionData(1),
           categorySel: "ヒーロー",
-          categoryList:["タイトル","あらすじ","アイテム","チーム","ヒーロー","メカ","固有名詞","変身者","怪獣","隊員"],
-          isNotNew:!isNew,
-          showDetail:true,
+          categoryList: ["タイトル", "あらすじ", "アイテム", "チーム", "ヒーロー", "メカ", "固有名詞", "変身者", "怪獣", "隊員"],
+          isNotNew: !isNew,
+          showDetail: true,
         },
         methods: {
           changeCategory: function () {
             //alert(this.categorySel);
-            var charactors = ["アイテム","ヒーロー","メカ","変身者","怪獣"];
-            this.showDetail  = charactors.join(",").indexOf(this.categorySel) > -1;              
+            var charactors = ["アイテム", "ヒーロー", "メカ", "変身者", "怪獣"];
+            this.showDetail = charactors.join(",").indexOf(this.categorySel) > -1;
           },
         }
       });
 
 
-      
+
 
       // function getSelectItem() {
       //   var id = window.location.href.
@@ -102,30 +131,32 @@
 
     function funcBackTOList() {
       var fromPage = window.location.href.replace(/.*from=/, "")
-      if (fromPage.indexOf("list")>-1) {
+      if (fromPage.indexOf("list") > -1) {
         window.location = "properNounList.html";
         return;
-      }
-      if (fromPage == "search") {
+      } else if (fromPage == "trans") {
+        window.location.href="properNounTranslist.html";
+      } else if (fromPage == "search") {
         window.location.href = "properNoun.html";
       }
     }
 
-   var temp_G_skill_cnt = 1;
-   function addSkill() {
-     var div = $("#skillDivTemplate").clone(true);
-     
-     div.show();
-     div.appendTo($("#skillContainer"));
-     temp_G_skill_cnt++;
-     div.find("#skill_num").html(temp_G_skill_cnt);
-     
-   }
-   function delSkill(obj) {
-     $(obj).parents(".media").remove();
-     temp_G_skill_cnt--;
-   }
+    var temp_G_skill_cnt = 1;
 
+    function addSkill() {
+      var div = $("#skillDivTemplate").clone(true);
+
+      div.show();
+      div.appendTo($("#skillContainer"));
+      temp_G_skill_cnt++;
+      div.find("#skill_num").html(temp_G_skill_cnt);
+
+    }
+
+    function delSkill(obj) {
+      $(obj).parents(".media").remove();
+      temp_G_skill_cnt--;
+    }
   </script>
 </head>
 
@@ -143,18 +174,20 @@
 
         <!-- <div class="row"> -->
         <!-- Left-aligned -->
-        <div class="alert alert-info "><h4>固有名詞詳細</h4></div>
-        <form >          
+        <div class="alert alert-info ">
+          <h4>固有名詞詳細</h4>
+        </div>
+        <form>
           <div class="form-group">
             <label for="category">カテゴリ</label>
-              <select value="5" @change="changeCategory" class="form-control" v-model="categorySel">
-                <option v-for="t in categoryList">{{t}}</option>             
-              </select>
+            <select value="5" @change="changeCategory" class="form-control" v-model="categorySel">
+              <option v-for="t in categoryList">{{t}}</option>
+            </select>
           </div>
 
           <div class="form-group">
             <label for="cnt">話数</label>
-              <input type="text" class="form-control" value="１" />
+            <input type="text" class="form-control" value="１" />
           </div>
 
           <div class="form-group">
@@ -162,61 +195,70 @@
             <input type="text" class="form-control" value="" />
           </div>
         </form>
-
+        
         <!-- <div class="alert alert-info">光を継ぐもの</div> -->
         <div id="charactorDiv" class="top50" v-show="showDetail">
-          <div class="alert alert-info "><h4>基本情報</h4></div>
+          <div class="alert alert-info ">
+            <h4>基本情報</h4>            
+          </div>
+          
           <div class="media">
             <div class="media-left media-middle">
               <div id="picPreview">
-                <img v-show="isNotNew" src="../img/hero1.png">
+                <img v-show="isNotNew" src="../img/hero1.png" style="width:300px;height:450px">
               </div>
               <label>
                 <span>
-                 名詞画像
-                <input type="file" id="upload1" name="images[]" multiple="multiple" />
+                  名詞画像
+                  <input type="file" id="upload1" name="images[]" multiple="multiple" />
                 </span>
               </label>
             </div>
-            <div class="media-body">              
-              <formfield></formfield>
-              <hr>
-
+            <div class="media-body">
+              <formfield></formfield>            
               <h4>変身器</h4>
               <div id="picPreview3"></div>
-              <span>変身器画像<input type="file" id="upload3" name="images[]" multiple="multiple" value="変身器画像" /></span>
+              <span>変身器画像
+                <input type="file" id="upload3" name="images[]" multiple="multiple" value="変身器画像" />
+              </span>
 
-                <hr>
-                <h4>紹介</h4>
-                <textarea>ウルトラマンティガの基本タイプで、スピードとパワーのバランスがいい。通常はこの姿で活動し、数々の特殊能力で邪悪な存在を粉砕していく。 人間ウルトラマンであるティガは、ダイゴそのものである。そのため、ダイゴの戦闘経験がダイレクトにティガの戦闘力に反映される。マルチタイプの戦闘はその名の通り万能で、パワー、スピードのバランスのとれた動きで様々な技を炸裂させている。
-                </textarea>
-                <hr>
-            </div> 
-          </div> 
-     
-        <div id="skillContainer">
-              <div class="alert alert-info "><h4>技能</h4></div>
-              <input type="button" value="技能追加" onclick="addSkill()"/>
-          <div class="media" id="skillDiv">
-              <div class="media-left media-middle" >
+              <hr>
+              <h4>紹介</h4>
+              <textarea>ウルトラマンティガの基本タイプで、スピードとパワーのバランスがいい。通常はこの姿で活動し、数々の特殊能力で邪悪な存在を粉砕していく。 人間ウルトラマンであるティガは、ダイゴそのものである。そのため、ダイゴの戦闘経験がダイレクトにティガの戦闘力に反映される。マルチタイプの戦闘はその名の通り万能で、パワー、スピードのバランスのとれた動きで様々な技を炸裂させている。
+              </textarea>
+              <hr>
+            </div>
+          </div>
+
+          <div id="skillContainer">
+            <div class="alert alert-info ">
+              <h4>技能</h4>
+            </div>
+            <input type="button" value="技能追加" onclick="addSkill()" />
+            <div class="media" id="skillDiv">
+              <div class="media-left media-middle">
                 <img v-show="isNotNew" src="../img/skill1.png" style="width:100px;height:100px;">
                 <div id="picPreview2" style="width:50px;height:50px;"></div>
                 <label>
-                    <span>技能画像<input type="file" id="upload2" name="images[]" multiple="multiple" /></span>
+                  <span>技能画像
+                    <input type="file" id="upload2" name="images[]" multiple="multiple" />
+                  </span>
                 </label>
               </div>
-            <div class="media-body">
-              <h4 class="media-heading　btn ">技能
-                <span class="badge">１</span>
-              </h4>
-              <h4>技能名:<input type="text" value="ゼペリオン光線" /></h4>
-              <h4>技能紹介:</h4>
-              <textarea> マルチタイプの必殺技だ。L字型に組んだ両腕から全エネルギーを一気に打つ。一撃で敵の体を貫くほどの威力だし、破壊力抜群の光線だ。切り札として使用する。
-              </textarea> 
-              <input type="button" value="技能削除" onclick="delSkill(this)" />             
+              <div class="media-body">
+                <h4 class="media-heading　btn ">技能
+                  <span class="badge">１</span>
+                </h4>
+                <h4>技能名:
+                  <input type="text" value="ゼペリオン光線" />
+                </h4>
+                <h4>技能紹介:</h4>
+                <textarea> マルチタイプの必殺技だ。L字型に組んだ両腕から全エネルギーを一気に打つ。一撃で敵の体を貫くほどの威力だし、破壊力抜群の光線だ。切り札として使用する。
+                </textarea>
+                <input type="button" value="技能削除" onclick="delSkill(this)" />
+              </div>
             </div>
           </div>
-        </div>
 
         </div>
 
@@ -231,24 +273,28 @@
       </div>
 
     </div>
-    
+
 
     <div class="media" id="skillDivTemplate" style="display:none">
-        <div class="media-left media-middle" >         
-          <div id="picPreview2" style="width:50px;height:50px;"></div>
-          <label>
-              <span>技能画像<input type="file" id="upload2" name="images[]" multiple="multiple" /></span>
-          </label>
-        </div>
+      <div class="media-left media-middle">
+        <div id="picPreview2" style="width:50px;height:50px;"></div>
+        <label>
+          <span>技能画像
+            <input type="file" id="upload2" name="images[]" multiple="multiple" />
+          </span>
+        </label>
+      </div>
       <div class="media-body">
         <h4 class="media-heading　btn ">技能
           <span class="badge" id="skill_num">１</span>
         </h4>
-        <h4>技能名:<input type="text" value="" /></h4>
+        <h4>技能名:
+          <input type="text" value="" />
+        </h4>
         <h4>技能紹介:</h4>
-        <textarea> 
-        </textarea> 
-        <input type="button" value="技能削除" onclick="delSkill(this)" />             
+        <textarea>
+        </textarea>
+        <input type="button" value="技能削除" onclick="delSkill(this)" />
       </div>
     </div>
 

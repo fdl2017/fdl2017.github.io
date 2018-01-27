@@ -30,18 +30,12 @@
     $(document).ready(function () {
       
       var configData = {
-        titles:["年度","作品略称","固有名詞","言語"],
+        // titles:["年度","作品略称","固有名詞","言語"],
+        titles:["No.","画像","カテゴリ","日本語","英語","北京語","広東語","台湾語","タイ語","韩語"],
         stylecls:["","","",""],
         datas:[
-        ["1996","ウルトラマンティガ","光を継ぐもの","日本語"],
-        ["1996","ウルトラマンティガ","发光的迪迦","中国語"],
-        ["1996","ウルトラマンティガ","","英語"],
-        ["1996","ウルトラマンティガ","石の神話","日本語"],        
-        ["1996","ウルトラマンティガ","石头的神话","中国語"],
-        ["1996","ウルトラマンティガ","","英語"],
-        ["1996","ウルトラマンティガ","悪魔の預言","日本語"],
-        ["1996","ウルトラマンティガ","恶魔的预言","中国語"],
-        ["1996","ウルトラマンティガ","","英語"],
+        ["1","../img/hero1.png","ヒーロー","ティガ","Tiga","迪迦","迪加","","",""],
+        ["2","../img/hero1.png","ヒーロー","ダイナ","Dyna","戴拿","迪加","","",""],
         ]      
       };
       
@@ -82,7 +76,17 @@
           </thead>
           <tbody id="list1">
             <tr v-for="(tr,index1) in trs">
-              <td v-for="(td,index2) in tr">{{td}}</td>           
+              <td v-for="(td,index2) in tr">
+                  <template v-if="index2==1" >
+                    <image style="width:50px;height:50px;" :src="td"></image>
+                  </template>
+                  <template v-else-if="td == ''">
+                      <input type="button" value="追加" onclick='window.location="../html/properNounEdit.html?from=trans"'/>
+                  </template>
+                  <template v-else>
+                    {{td}}
+                  </template>                 
+              </td>           
             </tr>
           </tbody>
         </table>
