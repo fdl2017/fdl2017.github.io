@@ -51,13 +51,41 @@
         //   $(this).parent().remove
         // });
       });
-
+     
+    var properNounSrchResultList_ = {
+    title:["画像","言語","固有名詞","名詞紹介"],
+    class:["col-sm-1","col-sm-1","col-sm-3","col-sm-5"],
+    list:[
+        {id:"1",productionId:"1",data:["hero1.png",
+                        "日本語",
+                        "マルチタイプウルトラマンティガ",
+                        "ウルトラマンティガの基本タイプで、スピードとパワーのバランスがいい。通常はこの姿で活動し、数々の特殊能力で邪悪な存在を粉砕していく。人間ウルトラマンであるティガは、ダイゴそのものである。そのため、ダイゴの戦闘経験がダイレクトにティガの戦闘力に反映される。マルチタイプの戦闘はその名の通り万能で、パワー、スピードのバランスのとれた動きで様々な技を炸裂させている。",
+                        // "1996",
+                        // "ウルトラマンティガ"
+                      ]
+                    
+                    },
+        {id:"1",productionId:"1",data:["hero1.png",
+                                        "中国語",
+                                        "複合型迪迦奥特曼",
+                                        "迪迦奥特曼的基本形态，速度与力量分配平衡。通常以该形态登场，并使用多种特殊能力打倒邪恶势力。迪迦的人间体是大古队员，因此大古队员的战斗经验直接反映了迪迦的战斗力。复合型如其名是万能型，平衡的力量与速度怀有各种炸裂技能。",
+                                        // "1996","迪迦奥特曼"
+                                      ]
+                                      },
+        {id:"1",productionId:"1",data:["hero1.png","英語","Multi Type",""]},
+        {id:"2",productionId:"1",data:["hero2.png","日本語","スカイタイプ",
+                                        "体の動きの素早さと飛行能力を最高にアップしたタイプで、空を飛ぶ怪獣やスピード怪獣との戦いでは、無敵の強さを誇っている。スカイパイプはスピード戦,空中戦にてその力を発揮するため,パワータイプと比べやや活躍の機会が少ない。",
+                                        ]},
+        {id:"3",productionId:"1",data:["hero3.png","日本語","",""]},
+        
+    ]
+}
       var menuv = new Vue({
         el: '#page-content-wrapper',
         data: {
-          stylecls: properNounSrchResultList["class"],
-          ths: properNounSrchResultList["title"],
-          trs: properNounSrchResultList["list"],
+          stylecls: properNounSrchResultList_["class"],
+          ths: properNounSrchResultList_["title"],
+          trs: properNounSrchResultList_["list"],
           selectItem: { data: ["", "", "", "", "", "", "", "", "", "", ""] },
         },
         methods: {
@@ -123,10 +151,12 @@
                    
                   </tr> -->
                   <tr v-for="(tr,index1) in trs">
-                    <td v-for="(td,index2) in tr.data">
-                      <img v-bind:src="'../img/'+td" width="50px" height="50px" v-if="/png/.test(td)" v-on:mouseover="showModel(index1,td)"></img>
-                      <label v-if="!/png/.test(td)">{{td}}</label>
-                    </td>
+                      <!-- <template v-if="index1 < 4"> -->
+                        <td v-for="(td,index2) in tr.data">                      
+                          <img v-bind:src="'../img/'+td" width="50px" height="50px" v-if="/png/.test(td)" v-on:mouseover="showModel(index1,td)"></img>
+                          <label v-if="!/png/.test(td)">{{td}}</label>                      
+                        </td>
+                      <!-- </template> -->
                     <td>
                       <a v-bind:href="'properNounEdit.html?'+tr.id+'from=list'" class="btn btn-default">編集</a>
                       <a v-bind:href="'properNounDetail.html?'+tr.id+'from=list'" class="btn btn-default">詳細</a>
