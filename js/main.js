@@ -61,7 +61,7 @@ $(function () {
   //====================
   // Menu click event
   //====================
-  $("#wrapper").removeClass("active")
+  //$("#wrapper").removeClass("active")
   if (G_OBJ.getItem("class") === "active") {
     $("#wrapper").addClass("active");
   }

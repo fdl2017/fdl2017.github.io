@@ -52,6 +52,9 @@
                 <template v-if="el.type==\'checkbox\'">\
                     <label class="checkbox-inline" v-for="(ck,idx) in el.value"><input type="checkbox" :name="\'chk\'+idx" v-model="user_lans">{{ck}}</label>\
                 </template>\
+                <template v-else-if="el.name==\'password\'">\
+                    <label>a2xw1ws23a@</label>\
+                </template>\
                 <template v-else-if="el.type==\'radio\'">\
                     <label class="radio-inline" v-for="(r,idx) in el.value"><input type="radio" :value="idx" name="rd" v-model="user_type_sel"  onclick="showContract(this.value)">{{r}}</label>\
                 </template>\
